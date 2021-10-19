@@ -1,0 +1,11 @@
+query Cube {
+  cube {
+    id
+    sides {
+        id
+        red
+        green
+        blue
+    }
+  }
+}

@@ -1,0 +1,45 @@
+type Cube {
+  id: ID
+
+  sides: [Color]
+}
+
+type Color {
+  id: ID
+
+  red: Int
+
+  green: Int
+
+  blue: Int
+}
+
+input SideInput {
+  id: ID
+
+  red: Int
+
+  green: Int
+
+  blue: Int
+}
+
+type Query {
+  cube: Cube
+}
+
+type Mutation {
+  updateSide(side: SideInput): Cube
+
+  testMut(dret: String): Cube
+}
+
+type Subscription {
+  cubeChange: Cube
+}
+
+schema {
+  query: Query
+  mutation: Mutation
+  subscription: Subscription
+}

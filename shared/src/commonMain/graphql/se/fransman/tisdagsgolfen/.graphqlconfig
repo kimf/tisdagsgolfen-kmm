@@ -1,0 +1,15 @@
+{
+  "name": "Cube GraphQL Schema",
+  "schemaPath": "schema.graphql",
+  "extensions": {
+    "endpoints": {
+      "Default GraphQL Endpoint": {
+        "url": "https://thecube.daresaycloud.co/graphql",
+        "headers": {
+          "user-agent": "KMM GraphQL"
+        },
+        "introspect": false
+      }
+    }
+  }
+}
