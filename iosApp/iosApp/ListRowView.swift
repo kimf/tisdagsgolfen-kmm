@@ -34,6 +34,23 @@ struct ListRowView: View {
     }
 }
 
+struct ListRowViews_Previews: PreviewProvider {
+    static var previews: some View {
+        Group {
+            ListRowView(side: CubeQuery.Side.init(id: "top", red: 123, green: 140, blue: 20))
+                .previewLayout(PreviewLayout.sizeThatFits)
+                .padding()
+                .previewDisplayName("Default preview 1")
+            ListRowView(side: CubeQuery.Side.init(id: "top", red: 123, green: 140, blue: 20))
+                .padding()
+                .previewLayout(PreviewLayout.sizeThatFits)
+                .background(Color(.systemBackground))
+                .environment(\.colorScheme, .dark)
+                .previewDisplayName("Dark Mode preview 1")
+        }
+    }
+}
+
 
 extension UIColor {
     convenience init(side: CubeQuery.Side) {
