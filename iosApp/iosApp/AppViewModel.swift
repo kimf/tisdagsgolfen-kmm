@@ -19,7 +19,7 @@ class AppViewModel: ObservableObject {
 
     func getPlayers() async {
         do {
-            let players = try await repository.getPlayers()
+            players = try await repository.getPlayers()
         } catch {
             print(error)
         }

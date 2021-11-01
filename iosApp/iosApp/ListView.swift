@@ -10,7 +10,7 @@ import SwiftUI
 import shared
 
 struct ListView: View {
-    @State var players: [PlayerQuery.AllPlayer] = []
+    @State var players: [PlayersQuery.AllPlayer] = []
     @StateObject var viewModel = AppViewModel()
 
     var body: some View {
