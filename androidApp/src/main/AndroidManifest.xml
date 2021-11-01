@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="se.fransman.tisdagsgolfen">
+    package="se.fransman.tgapp">
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name="se.fransman.tisdagsgolfen.App"
-        android:label="TheCube"
-        android:allowBackup="false">
+        android:name="se.fransman.tgapp.App"
+        android:label="Tisdagsgolfen"
+        android:allowBackup="false"
+        android:usesCleartextTraffic="true"
+        >
         <activity
-            android:name="se.fransman.tisdagsgolfen.AppActivity"
+            android:name="se.fransman.tgapp.AppActivity"
             android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
             android:launchMode="singleInstance"
             android:windowSoftInputMode="adjustResize"

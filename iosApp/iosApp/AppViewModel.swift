@@ -12,13 +12,14 @@ import shared
 
 @MainActor
 class AppViewModel: ObservableObject {
-    @Published var sides: [CubeQuery.Side] = []
+    @Published
+    var players: [PlayersQuery.AllPlayer] = []
+
     let repository = ApolloRepository()
-    
-    func getCube() async {
+
+    func getPlayers() async {
         do {
-            let cube = try await repository.getCube()
-            sides = (cube?.sidesFilterNotNull())!
+            let players = try await repository.getPlayers()
         } catch {
             print(error)
         }

@@ -1,6 +1,5 @@
-package se.fransman.tisdagsgolfen
+package se.fransman.tgapp
 
-import se.fransman.tisdagsgolfen.AppViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 

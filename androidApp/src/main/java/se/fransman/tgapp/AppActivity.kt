@@ -1,4 +1,4 @@
-package se.fransman.tisdagsgolfen
+package se.fransman.tgapp
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -22,5 +22,5 @@ class AppActivity: ComponentActivity() {
 @Composable
 fun MainLayout() {
   val viewModel = getViewModel<AppViewModel>()
-  MainScreen(viewModel = viewModel, cubeId = "theCube")
+  MainScreen(viewModel = viewModel)
 }

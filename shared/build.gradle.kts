@@ -3,12 +3,13 @@ import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
-    id("com.apollographql.apollo3").version("3.0.0-alpha07")
+    id("com.apollographql.apollo3").version("3.0.0-beta01")
 }
 
 apollo {
-    packageName.set("se.fransman.tisdagsgolfen")
+    packageName.set("se.fransman.tg")
 }
+
 
 kotlin {
     android()
@@ -32,7 +33,7 @@ kotlin {
                 // Coroutines
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
                 // Apollo
-                implementation("com.apollographql.apollo3:apollo-runtime:3.0.0-alpha07")
+                implementation("com.apollographql.apollo3:apollo-runtime:3.0.0-beta01")
                 // Koin
                 implementation("io.insert-koin:koin-core:3.1.2")
             }
@@ -45,20 +46,6 @@ kotlin {
             dependencies {
             }
         }
-
-        val commonTest by getting {
-            dependencies {
-                implementation(kotlin("test-common"))
-                implementation(kotlin("test-annotations-common"))
-            }
-        }
-        val androidTest by getting {
-            dependencies {
-                implementation(kotlin("test-junit"))
-                implementation("junit:junit:4.13.2")
-            }
-        }
-        val iosTest by getting
     }
 }
 

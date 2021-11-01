@@ -1,4 +1,4 @@
-package se.fransman.tisdagsgolfen
+package se.fransman.tg
 
 import org.koin.core.context.startKoin
 import org.koin.dsl.KoinAppDeclaration

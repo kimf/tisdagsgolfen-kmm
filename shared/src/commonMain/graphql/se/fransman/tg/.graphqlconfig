@@ -1,10 +1,10 @@
 {
-  "name": "Cube GraphQL Schema",
-  "schemaPath": "schema.graphql",
+  "name": "Tisdagsgolfen GraphQL Schema",
+  "schemaPath": "schema.graphqls",
   "extensions": {
     "endpoints": {
       "Default GraphQL Endpoint": {
-        "url": "https://thecube.daresaycloud.co/graphql",
+        "url": "http://192.168.68.112:4000/graphql",
         "headers": {
           "user-agent": "KMM GraphQL"
         },

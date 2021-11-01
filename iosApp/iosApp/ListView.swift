@@ -10,19 +10,19 @@ import SwiftUI
 import shared
 
 struct ListView: View {
-    @State var sides: [CubeQuery.Side] = []
+    @State var players: [PlayerQuery.AllPlayer] = []
     @StateObject var viewModel = AppViewModel()
 
     var body: some View {
         List {
-            Section("Sides") {
-                ForEach(viewModel.sides, id:\.id) { side in
-                    ListRowView(side: side)
+            Section("Players") {
+                ForEach(viewModel.players, id:\.id) { player in
+                    ListRowView(player: player)
                 }
             }
         }
         .task {
-            await viewModel.getCube()
+            await viewModel.getPlayers()
         }
     }
 }
