@@ -1,5 +1,5 @@
 query Players {
-    allPlayers {
+    players {
         id
         firstName
         lastName

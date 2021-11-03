@@ -3,8 +3,6 @@ plugins {
     kotlin("android")
 }
 
-val coroutinesVersion = "1.5.2"
-
 dependencies {
     implementation(project(":shared"))
     implementation("androidx.appcompat:appcompat:1.3.1")
@@ -15,6 +13,7 @@ dependencies {
     implementation("androidx.core:core:1.7.0")
 
     implementation(project(":shared"))
+    implementation("androidx.lifecycle:lifecycle-process:2.4.0")
     // desugar utils
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.5")
     // Compose
@@ -26,8 +25,8 @@ dependencies {
     // Compose Utils
     implementation("com.google.accompanist:accompanist-insets:0.18.0")
     // Coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.1-new-mm-dev2")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.1-new-mm-dev2")
 
     // Koin
     implementation("io.insert-koin:koin-core:3.1.2")

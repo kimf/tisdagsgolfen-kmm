@@ -10,11 +10,12 @@
 import SwiftUI
 import shared
 
-struct ListRowView: View {
-    let player: PlayersQuery.AllPlayer
+struct LeaderboardItem: View {
+    let player: PlayersQuery.Player
     
     var body: some View {
-        HStack(alignment: .top, spacing: 20) {
+        HStack(alignment: .top, spacing: 8) {
+            Image(systemName: "sunrise")
             Text(player.firstName ?? "")
                 .font(.footnote)
                 .foregroundColor(.gray)
@@ -25,10 +26,10 @@ struct ListRowView: View {
     }
 }
 
-struct ListRowViews_Previews: PreviewProvider {
+struct LeaderboardItem_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            ListRowView(player: PlayersQuery.AllPlayer.init(id: 1, firstName: "Kim", lastName: "Fransman", photo: ""))
+            LeaderboardItem(player: PlayersQuery.Player.init(id: 1, firstName: "Kim", lastName: "Fransman", photo: ""))
                 .previewLayout(PreviewLayout.sizeThatFits)
                 .padding()
                 .previewDisplayName("Default preview 1")

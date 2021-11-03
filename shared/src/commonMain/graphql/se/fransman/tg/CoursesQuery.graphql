@@ -1,0 +1,11 @@
+query Courses {
+    courses {
+        id
+        club
+        name
+        par
+        _count {
+            events
+        }
+    }
+}

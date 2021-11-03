@@ -9,16 +9,14 @@
 import SwiftUI
 import shared
 
-struct ListView: View {
-    @State var players: [PlayersQuery.AllPlayer] = []
+struct Leaderboard: View {
     @StateObject var viewModel = AppViewModel()
 
     var body: some View {
-        List {
-            Section("Players") {
-                ForEach(viewModel.players, id:\.id) { player in
-                    ListRowView(player: player)
-                }
+        LeaderboardFilters()
+        List {            
+            ForEach(viewModel.players, id:\.id) { player in
+                LeaderboardItem(player: player)
             }
         }
         .task {

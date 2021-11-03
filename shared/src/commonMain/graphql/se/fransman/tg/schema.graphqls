@@ -1,16 +1,93 @@
-"""
-A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
-"""
-scalar DateTime
-
 type Query {
-  allPlayers: [Player!]!
+  course(where: CourseWhereUniqueInput!): Course
 
-  allCourses(searchString: String, skip: Int, take: Int): [Course!]!
-}
+  findFirstCourse(where: CourseWhereInput, orderBy: [CourseOrderByWithRelationInput!], cursor: CourseWhereUniqueInput, take: Int, skip: Int, distinct: [CourseScalarFieldEnum!]): Course
 
-type Mutation {
-  createPlayer(data: PlayerCreateInput!): Player!
+  courses(where: CourseWhereInput, orderBy: [CourseOrderByWithRelationInput!], cursor: CourseWhereUniqueInput, take: Int, skip: Int, distinct: [CourseScalarFieldEnum!]): [Course!]!
+
+  aggregateCourse(where: CourseWhereInput, orderBy: [CourseOrderByWithRelationInput!], cursor: CourseWhereUniqueInput, take: Int, skip: Int): AggregateCourse!
+
+  groupByCourse(where: CourseWhereInput, orderBy: [CourseOrderByWithAggregationInput!], by: [CourseScalarFieldEnum!]!, having: CourseScalarWhereWithAggregatesInput, take: Int, skip: Int): [CourseGroupBy!]!
+
+  event(where: EventWhereUniqueInput!): Event
+
+  findFirstEvent(where: EventWhereInput, orderBy: [EventOrderByWithRelationInput!], cursor: EventWhereUniqueInput, take: Int, skip: Int, distinct: [EventScalarFieldEnum!]): Event
+
+  events(where: EventWhereInput, orderBy: [EventOrderByWithRelationInput!], cursor: EventWhereUniqueInput, take: Int, skip: Int, distinct: [EventScalarFieldEnum!]): [Event!]!
+
+  aggregateEvent(where: EventWhereInput, orderBy: [EventOrderByWithRelationInput!], cursor: EventWhereUniqueInput, take: Int, skip: Int): AggregateEvent!
+
+  groupByEvent(where: EventWhereInput, orderBy: [EventOrderByWithAggregationInput!], by: [EventScalarFieldEnum!]!, having: EventScalarWhereWithAggregatesInput, take: Int, skip: Int): [EventGroupBy!]!
+
+  finalInfo(where: FinalInfoWhereUniqueInput!): FinalInfo
+
+  findFirstFinalInfo(where: FinalInfoWhereInput, orderBy: [FinalInfoOrderByWithRelationInput!], cursor: FinalInfoWhereUniqueInput, take: Int, skip: Int, distinct: [FinalInfoScalarFieldEnum!]): FinalInfo
+
+  finalInfos(where: FinalInfoWhereInput, orderBy: [FinalInfoOrderByWithRelationInput!], cursor: FinalInfoWhereUniqueInput, take: Int, skip: Int, distinct: [FinalInfoScalarFieldEnum!]): [FinalInfo!]!
+
+  aggregateFinalInfo(where: FinalInfoWhereInput, orderBy: [FinalInfoOrderByWithRelationInput!], cursor: FinalInfoWhereUniqueInput, take: Int, skip: Int): AggregateFinalInfo!
+
+  groupByFinalInfo(where: FinalInfoWhereInput, orderBy: [FinalInfoOrderByWithAggregationInput!], by: [FinalInfoScalarFieldEnum!]!, having: FinalInfoScalarWhereWithAggregatesInput, take: Int, skip: Int): [FinalInfoGroupBy!]!
+
+  hole(where: HoleWhereUniqueInput!): Hole
+
+  findFirstHole(where: HoleWhereInput, orderBy: [HoleOrderByWithRelationInput!], cursor: HoleWhereUniqueInput, take: Int, skip: Int, distinct: [HoleScalarFieldEnum!]): Hole
+
+  holes(where: HoleWhereInput, orderBy: [HoleOrderByWithRelationInput!], cursor: HoleWhereUniqueInput, take: Int, skip: Int, distinct: [HoleScalarFieldEnum!]): [Hole!]!
+
+  aggregateHole(where: HoleWhereInput, orderBy: [HoleOrderByWithRelationInput!], cursor: HoleWhereUniqueInput, take: Int, skip: Int): AggregateHole!
+
+  groupByHole(where: HoleWhereInput, orderBy: [HoleOrderByWithAggregationInput!], by: [HoleScalarFieldEnum!]!, having: HoleScalarWhereWithAggregatesInput, take: Int, skip: Int): [HoleGroupBy!]!
+
+  player(where: PlayerWhereUniqueInput!): Player
+
+  findFirstPlayer(where: PlayerWhereInput, orderBy: [PlayerOrderByWithRelationInput!], cursor: PlayerWhereUniqueInput, take: Int, skip: Int, distinct: [PlayerScalarFieldEnum!]): Player
+
+  players(where: PlayerWhereInput, orderBy: [PlayerOrderByWithRelationInput!], cursor: PlayerWhereUniqueInput, take: Int, skip: Int, distinct: [PlayerScalarFieldEnum!]): [Player!]!
+
+  aggregatePlayer(where: PlayerWhereInput, orderBy: [PlayerOrderByWithRelationInput!], cursor: PlayerWhereUniqueInput, take: Int, skip: Int): AggregatePlayer!
+
+  groupByPlayer(where: PlayerWhereInput, orderBy: [PlayerOrderByWithAggregationInput!], by: [PlayerScalarFieldEnum!]!, having: PlayerScalarWhereWithAggregatesInput, take: Int, skip: Int): [PlayerGroupBy!]!
+
+  score(where: ScoreWhereUniqueInput!): Score
+
+  findFirstScore(where: ScoreWhereInput, orderBy: [ScoreOrderByWithRelationInput!], cursor: ScoreWhereUniqueInput, take: Int, skip: Int, distinct: [ScoreScalarFieldEnum!]): Score
+
+  scores(where: ScoreWhereInput, orderBy: [ScoreOrderByWithRelationInput!], cursor: ScoreWhereUniqueInput, take: Int, skip: Int, distinct: [ScoreScalarFieldEnum!]): [Score!]!
+
+  aggregateScore(where: ScoreWhereInput, orderBy: [ScoreOrderByWithRelationInput!], cursor: ScoreWhereUniqueInput, take: Int, skip: Int): AggregateScore!
+
+  groupByScore(where: ScoreWhereInput, orderBy: [ScoreOrderByWithAggregationInput!], by: [ScoreScalarFieldEnum!]!, having: ScoreScalarWhereWithAggregatesInput, take: Int, skip: Int): [ScoreGroupBy!]!
+
+  scoringSession(where: ScoringSessionWhereUniqueInput!): ScoringSession
+
+  findFirstScoringSession(where: ScoringSessionWhereInput, orderBy: [ScoringSessionOrderByWithRelationInput!], cursor: ScoringSessionWhereUniqueInput, take: Int, skip: Int, distinct: [ScoringSessionScalarFieldEnum!]): ScoringSession
+
+  scoringSessions(where: ScoringSessionWhereInput, orderBy: [ScoringSessionOrderByWithRelationInput!], cursor: ScoringSessionWhereUniqueInput, take: Int, skip: Int, distinct: [ScoringSessionScalarFieldEnum!]): [ScoringSession!]!
+
+  aggregateScoringSession(where: ScoringSessionWhereInput, orderBy: [ScoringSessionOrderByWithRelationInput!], cursor: ScoringSessionWhereUniqueInput, take: Int, skip: Int): AggregateScoringSession!
+
+  groupByScoringSession(where: ScoringSessionWhereInput, orderBy: [ScoringSessionOrderByWithAggregationInput!], by: [ScoringSessionScalarFieldEnum!]!, having: ScoringSessionScalarWhereWithAggregatesInput, take: Int, skip: Int): [ScoringSessionGroupBy!]!
+
+  season(where: SeasonWhereUniqueInput!): Season
+
+  findFirstSeason(where: SeasonWhereInput, orderBy: [SeasonOrderByWithRelationInput!], cursor: SeasonWhereUniqueInput, take: Int, skip: Int, distinct: [SeasonScalarFieldEnum!]): Season
+
+  seasons(where: SeasonWhereInput, orderBy: [SeasonOrderByWithRelationInput!], cursor: SeasonWhereUniqueInput, take: Int, skip: Int, distinct: [SeasonScalarFieldEnum!]): [Season!]!
+
+  aggregateSeason(where: SeasonWhereInput, orderBy: [SeasonOrderByWithRelationInput!], cursor: SeasonWhereUniqueInput, take: Int, skip: Int): AggregateSeason!
+
+  groupBySeason(where: SeasonWhereInput, orderBy: [SeasonOrderByWithAggregationInput!], by: [SeasonScalarFieldEnum!]!, having: SeasonScalarWhereWithAggregatesInput, take: Int, skip: Int): [SeasonGroupBy!]!
+
+  team(where: TeamWhereUniqueInput!): Team
+
+  findFirstTeam(where: TeamWhereInput, orderBy: [TeamOrderByWithRelationInput!], cursor: TeamWhereUniqueInput, take: Int, skip: Int, distinct: [TeamScalarFieldEnum!]): Team
+
+  teams(where: TeamWhereInput, orderBy: [TeamOrderByWithRelationInput!], cursor: TeamWhereUniqueInput, take: Int, skip: Int, distinct: [TeamScalarFieldEnum!]): [Team!]!
+
+  aggregateTeam(where: TeamWhereInput, orderBy: [TeamOrderByWithRelationInput!], cursor: TeamWhereUniqueInput, take: Int, skip: Int): AggregateTeam!
+
+  groupByTeam(where: TeamWhereInput, orderBy: [TeamOrderByWithAggregationInput!], by: [TeamScalarFieldEnum!]!, having: TeamScalarWhereWithAggregatesInput, take: Int, skip: Int): [TeamGroupBy!]!
 }
 
 type Course {
@@ -22,7 +99,1114 @@ type Course {
 
   par: Int!
 
-  holes: [Hole!]!
+  _count: CourseCount
+
+  events(where: EventWhereInput, orderBy: [EventOrderByWithRelationInput!], cursor: EventWhereUniqueInput, take: Int, skip: Int, distinct: [EventScalarFieldEnum!]): [Event!]!
+
+  holes(where: HoleWhereInput, orderBy: [HoleOrderByWithRelationInput!], cursor: HoleWhereUniqueInput, take: Int, skip: Int, distinct: [HoleScalarFieldEnum!]): [Hole!]!
+}
+
+type CourseCount {
+  events: Int!
+
+  holes: Int!
+}
+
+type Event {
+  id: Int!
+
+  special: Boolean!
+
+  scoring: EventScoring!
+
+  status: EventStatus!
+
+  type: EventType!
+
+  courseId: Int!
+
+  seasonId: Int!
+
+  _count: EventCount
+
+  course: Course!
+
+  season: Season!
+
+  scores(where: ScoreWhereInput, orderBy: [ScoreOrderByWithRelationInput!], cursor: ScoreWhereUniqueInput, take: Int, skip: Int, distinct: [ScoreScalarFieldEnum!]): [Score!]!
+
+  ScoringSession(where: ScoringSessionWhereInput, orderBy: [ScoringSessionOrderByWithRelationInput!], cursor: ScoringSessionWhereUniqueInput, take: Int, skip: Int, distinct: [ScoringSessionScalarFieldEnum!]): [ScoringSession!]!
+}
+
+enum EventScoring {
+  POINTS
+
+  STROKES
+}
+
+enum EventStatus {
+  STARTED
+
+  FINISHED
+}
+
+enum EventType {
+  INDIVIDUAL
+
+  TEAM
+}
+
+type EventCount {
+  scores: Int!
+
+  ScoringSession: Int!
+}
+
+type Season {
+  id: Int!
+
+  name: String!
+
+  status: SeasonStatus!
+
+  finalInfoId: Int
+
+  _count: SeasonCount
+
+  events(where: EventWhereInput, orderBy: [EventOrderByWithRelationInput!], cursor: EventWhereUniqueInput, take: Int, skip: Int, distinct: [EventScalarFieldEnum!]): [Event!]!
+
+  finalInfo: FinalInfo
+}
+
+enum SeasonStatus {
+  REGULAR
+
+  FINALS
+
+  FINISHED
+}
+
+type SeasonCount {
+  events: Int!
+}
+
+input EventWhereInput {
+  AND: [EventWhereInput!]
+
+  OR: [EventWhereInput!]
+
+  NOT: [EventWhereInput!]
+
+  id: IntFilter
+
+  special: BoolFilter
+
+  scoring: EnumEventScoringFilter
+
+  status: EnumEventStatusFilter
+
+  type: EnumEventTypeFilter
+
+  course: CourseRelationFilter
+
+  courseId: IntFilter
+
+  season: SeasonRelationFilter
+
+  seasonId: IntFilter
+
+  scores: ScoreListRelationFilter
+
+  ScoringSession: ScoringSessionListRelationFilter
+}
+
+input IntFilter {
+  equals: Int
+
+  in: [Int!]
+
+  notIn: [Int!]
+
+  lt: Int
+
+  lte: Int
+
+  gt: Int
+
+  gte: Int
+
+  not: NestedIntFilter
+}
+
+input NestedIntFilter {
+  equals: Int
+
+  in: [Int!]
+
+  notIn: [Int!]
+
+  lt: Int
+
+  lte: Int
+
+  gt: Int
+
+  gte: Int
+
+  not: NestedIntFilter
+}
+
+input BoolFilter {
+  equals: Boolean
+
+  not: NestedBoolFilter
+}
+
+input NestedBoolFilter {
+  equals: Boolean
+
+  not: NestedBoolFilter
+}
+
+input EnumEventScoringFilter {
+  equals: EventScoring
+
+  in: [EventScoring!]
+
+  notIn: [EventScoring!]
+
+  not: NestedEnumEventScoringFilter
+}
+
+input NestedEnumEventScoringFilter {
+  equals: EventScoring
+
+  in: [EventScoring!]
+
+  notIn: [EventScoring!]
+
+  not: NestedEnumEventScoringFilter
+}
+
+input EnumEventStatusFilter {
+  equals: EventStatus
+
+  in: [EventStatus!]
+
+  notIn: [EventStatus!]
+
+  not: NestedEnumEventStatusFilter
+}
+
+input NestedEnumEventStatusFilter {
+  equals: EventStatus
+
+  in: [EventStatus!]
+
+  notIn: [EventStatus!]
+
+  not: NestedEnumEventStatusFilter
+}
+
+input EnumEventTypeFilter {
+  equals: EventType
+
+  in: [EventType!]
+
+  notIn: [EventType!]
+
+  not: NestedEnumEventTypeFilter
+}
+
+input NestedEnumEventTypeFilter {
+  equals: EventType
+
+  in: [EventType!]
+
+  notIn: [EventType!]
+
+  not: NestedEnumEventTypeFilter
+}
+
+input CourseRelationFilter {
+  is: CourseWhereInput
+
+  isNot: CourseWhereInput
+}
+
+input CourseWhereInput {
+  AND: [CourseWhereInput!]
+
+  OR: [CourseWhereInput!]
+
+  NOT: [CourseWhereInput!]
+
+  id: IntFilter
+
+  club: StringFilter
+
+  name: StringFilter
+
+  par: IntFilter
+
+  events: EventListRelationFilter
+
+  holes: HoleListRelationFilter
+}
+
+input StringFilter {
+  equals: String
+
+  in: [String!]
+
+  notIn: [String!]
+
+  lt: String
+
+  lte: String
+
+  gt: String
+
+  gte: String
+
+  contains: String
+
+  startsWith: String
+
+  endsWith: String
+
+  mode: QueryMode
+
+  not: NestedStringFilter
+}
+
+enum QueryMode {
+  default
+
+  insensitive
+}
+
+input NestedStringFilter {
+  equals: String
+
+  in: [String!]
+
+  notIn: [String!]
+
+  lt: String
+
+  lte: String
+
+  gt: String
+
+  gte: String
+
+  contains: String
+
+  startsWith: String
+
+  endsWith: String
+
+  not: NestedStringFilter
+}
+
+input EventListRelationFilter {
+  every: EventWhereInput
+
+  some: EventWhereInput
+
+  none: EventWhereInput
+}
+
+input HoleListRelationFilter {
+  every: HoleWhereInput
+
+  some: HoleWhereInput
+
+  none: HoleWhereInput
+}
+
+input HoleWhereInput {
+  AND: [HoleWhereInput!]
+
+  OR: [HoleWhereInput!]
+
+  NOT: [HoleWhereInput!]
+
+  id: IntFilter
+
+  index: IntFilter
+
+  number: IntFilter
+
+  par: IntFilter
+
+  course: CourseRelationFilter
+
+  courseId: IntFilter
+}
+
+input SeasonRelationFilter {
+  is: SeasonWhereInput
+
+  isNot: SeasonWhereInput
+}
+
+input SeasonWhereInput {
+  AND: [SeasonWhereInput!]
+
+  OR: [SeasonWhereInput!]
+
+  NOT: [SeasonWhereInput!]
+
+  id: IntFilter
+
+  name: StringFilter
+
+  status: EnumSeasonStatusFilter
+
+  events: EventListRelationFilter
+
+  finalInfo: FinalInfoRelationFilter
+
+  finalInfoId: IntNullableFilter
+}
+
+input EnumSeasonStatusFilter {
+  equals: SeasonStatus
+
+  in: [SeasonStatus!]
+
+  notIn: [SeasonStatus!]
+
+  not: NestedEnumSeasonStatusFilter
+}
+
+input NestedEnumSeasonStatusFilter {
+  equals: SeasonStatus
+
+  in: [SeasonStatus!]
+
+  notIn: [SeasonStatus!]
+
+  not: NestedEnumSeasonStatusFilter
+}
+
+input FinalInfoRelationFilter {
+  is: FinalInfoWhereInput
+
+  isNot: FinalInfoWhereInput
+}
+
+input FinalInfoWhereInput {
+  AND: [FinalInfoWhereInput!]
+
+  OR: [FinalInfoWhereInput!]
+
+  NOT: [FinalInfoWhereInput!]
+
+  id: IntFilter
+
+  photo: StringFilter
+
+  winner: PlayerRelationFilter
+
+  winnerId: IntFilter
+
+  story: StringFilter
+
+  Season: SeasonListRelationFilter
+}
+
+input PlayerRelationFilter {
+  is: PlayerWhereInput
+
+  isNot: PlayerWhereInput
+}
+
+input PlayerWhereInput {
+  AND: [PlayerWhereInput!]
+
+  OR: [PlayerWhereInput!]
+
+  NOT: [PlayerWhereInput!]
+
+  id: IntFilter
+
+  firstName: StringFilter
+
+  lastName: StringFilter
+
+  photo: StringNullableFilter
+
+  teams: TeamListRelationFilter
+
+  scoringSessions: ScoringSessionListRelationFilter
+
+  Score: ScoreListRelationFilter
+
+  FinalInfo: FinalInfoListRelationFilter
+}
+
+input StringNullableFilter {
+  equals: String
+
+  in: [String!]
+
+  notIn: [String!]
+
+  lt: String
+
+  lte: String
+
+  gt: String
+
+  gte: String
+
+  contains: String
+
+  startsWith: String
+
+  endsWith: String
+
+  mode: QueryMode
+
+  not: NestedStringNullableFilter
+}
+
+input NestedStringNullableFilter {
+  equals: String
+
+  in: [String!]
+
+  notIn: [String!]
+
+  lt: String
+
+  lte: String
+
+  gt: String
+
+  gte: String
+
+  contains: String
+
+  startsWith: String
+
+  endsWith: String
+
+  not: NestedStringNullableFilter
+}
+
+input TeamListRelationFilter {
+  every: TeamWhereInput
+
+  some: TeamWhereInput
+
+  none: TeamWhereInput
+}
+
+input TeamWhereInput {
+  AND: [TeamWhereInput!]
+
+  OR: [TeamWhereInput!]
+
+  NOT: [TeamWhereInput!]
+
+  id: IntFilter
+
+  players: PlayerListRelationFilter
+
+  scoringSessions: ScoringSessionListRelationFilter
+
+  createdAt: DateTimeFilter
+}
+
+input PlayerListRelationFilter {
+  every: PlayerWhereInput
+
+  some: PlayerWhereInput
+
+  none: PlayerWhereInput
+}
+
+input ScoringSessionListRelationFilter {
+  every: ScoringSessionWhereInput
+
+  some: ScoringSessionWhereInput
+
+  none: ScoringSessionWhereInput
+}
+
+input ScoringSessionWhereInput {
+  AND: [ScoringSessionWhereInput!]
+
+  OR: [ScoringSessionWhereInput!]
+
+  NOT: [ScoringSessionWhereInput!]
+
+  id: IntFilter
+
+  event: EventRelationFilter
+
+  eventId: IntFilter
+
+  currentHole: IntFilter
+
+  players: PlayerListRelationFilter
+
+  teams: TeamListRelationFilter
+}
+
+input EventRelationFilter {
+  is: EventWhereInput
+
+  isNot: EventWhereInput
+}
+
+input DateTimeFilter {
+  equals: DateTime
+
+  in: [DateTime!]
+
+  notIn: [DateTime!]
+
+  lt: DateTime
+
+  lte: DateTime
+
+  gt: DateTime
+
+  gte: DateTime
+
+  not: NestedDateTimeFilter
+}
+
+"""
+The javascript `Date` as string. Type represents date and time as the ISO Date string.
+"""
+scalar DateTime
+
+input NestedDateTimeFilter {
+  equals: DateTime
+
+  in: [DateTime!]
+
+  notIn: [DateTime!]
+
+  lt: DateTime
+
+  lte: DateTime
+
+  gt: DateTime
+
+  gte: DateTime
+
+  not: NestedDateTimeFilter
+}
+
+input ScoreListRelationFilter {
+  every: ScoreWhereInput
+
+  some: ScoreWhereInput
+
+  none: ScoreWhereInput
+}
+
+input ScoreWhereInput {
+  AND: [ScoreWhereInput!]
+
+  OR: [ScoreWhereInput!]
+
+  NOT: [ScoreWhereInput!]
+
+  id: IntFilter
+
+  resultValue: FloatFilter
+
+  eventPoints: FloatFilter
+
+  event: EventRelationFilter
+
+  eventId: IntFilter
+
+  player: PlayerRelationFilter
+
+  playerId: IntFilter
+
+  beers: FloatFilter
+
+  kr: IntFilter
+}
+
+input FloatFilter {
+  equals: Float
+
+  in: [Float!]
+
+  notIn: [Float!]
+
+  lt: Float
+
+  lte: Float
+
+  gt: Float
+
+  gte: Float
+
+  not: NestedFloatFilter
+}
+
+input NestedFloatFilter {
+  equals: Float
+
+  in: [Float!]
+
+  notIn: [Float!]
+
+  lt: Float
+
+  lte: Float
+
+  gt: Float
+
+  gte: Float
+
+  not: NestedFloatFilter
+}
+
+input FinalInfoListRelationFilter {
+  every: FinalInfoWhereInput
+
+  some: FinalInfoWhereInput
+
+  none: FinalInfoWhereInput
+}
+
+input SeasonListRelationFilter {
+  every: SeasonWhereInput
+
+  some: SeasonWhereInput
+
+  none: SeasonWhereInput
+}
+
+input IntNullableFilter {
+  equals: Int
+
+  in: [Int!]
+
+  notIn: [Int!]
+
+  lt: Int
+
+  lte: Int
+
+  gt: Int
+
+  gte: Int
+
+  not: NestedIntNullableFilter
+}
+
+input NestedIntNullableFilter {
+  equals: Int
+
+  in: [Int!]
+
+  notIn: [Int!]
+
+  lt: Int
+
+  lte: Int
+
+  gt: Int
+
+  gte: Int
+
+  not: NestedIntNullableFilter
+}
+
+input EventOrderByWithRelationInput {
+  id: SortOrder
+
+  special: SortOrder
+
+  scoring: SortOrder
+
+  status: SortOrder
+
+  type: SortOrder
+
+  course: CourseOrderByWithRelationInput
+
+  courseId: SortOrder
+
+  season: SeasonOrderByWithRelationInput
+
+  seasonId: SortOrder
+
+  scores: ScoreOrderByRelationAggregateInput
+
+  ScoringSession: ScoringSessionOrderByRelationAggregateInput
+}
+
+enum SortOrder {
+  asc
+
+  desc
+}
+
+input CourseOrderByWithRelationInput {
+  id: SortOrder
+
+  club: SortOrder
+
+  name: SortOrder
+
+  par: SortOrder
+
+  events: EventOrderByRelationAggregateInput
+
+  holes: HoleOrderByRelationAggregateInput
+}
+
+input EventOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input HoleOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input SeasonOrderByWithRelationInput {
+  id: SortOrder
+
+  name: SortOrder
+
+  status: SortOrder
+
+  events: EventOrderByRelationAggregateInput
+
+  finalInfo: FinalInfoOrderByWithRelationInput
+
+  finalInfoId: SortOrder
+}
+
+input FinalInfoOrderByWithRelationInput {
+  id: SortOrder
+
+  photo: SortOrder
+
+  winner: PlayerOrderByWithRelationInput
+
+  winnerId: SortOrder
+
+  story: SortOrder
+
+  Season: SeasonOrderByRelationAggregateInput
+}
+
+input PlayerOrderByWithRelationInput {
+  id: SortOrder
+
+  firstName: SortOrder
+
+  lastName: SortOrder
+
+  photo: SortOrder
+
+  teams: TeamOrderByRelationAggregateInput
+
+  scoringSessions: ScoringSessionOrderByRelationAggregateInput
+
+  Score: ScoreOrderByRelationAggregateInput
+
+  FinalInfo: FinalInfoOrderByRelationAggregateInput
+}
+
+input TeamOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input ScoringSessionOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input ScoreOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input FinalInfoOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input SeasonOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input EventWhereUniqueInput {
+  id: Int
+}
+
+enum EventScalarFieldEnum {
+  id
+
+  special
+
+  scoring
+
+  status
+
+  type
+
+  courseId
+
+  seasonId
+}
+
+type FinalInfo {
+  id: Int!
+
+  photo: String!
+
+  winnerId: Int!
+
+  story: String!
+
+  _count: FinalInfoCount
+
+  winner: Player!
+
+  Season(where: SeasonWhereInput, orderBy: [SeasonOrderByWithRelationInput!], cursor: SeasonWhereUniqueInput, take: Int, skip: Int, distinct: [SeasonScalarFieldEnum!]): [Season!]!
+}
+
+type FinalInfoCount {
+  Season: Int!
+}
+
+type Player {
+  id: Int!
+
+  firstName: String!
+
+  lastName: String!
+
+  photo: String
+
+  _count: PlayerCount
+
+  teams(where: TeamWhereInput, orderBy: [TeamOrderByWithRelationInput!], cursor: TeamWhereUniqueInput, take: Int, skip: Int, distinct: [TeamScalarFieldEnum!]): [Team!]!
+
+  scoringSessions(where: ScoringSessionWhereInput, orderBy: [ScoringSessionOrderByWithRelationInput!], cursor: ScoringSessionWhereUniqueInput, take: Int, skip: Int, distinct: [ScoringSessionScalarFieldEnum!]): [ScoringSession!]!
+
+  Score(where: ScoreWhereInput, orderBy: [ScoreOrderByWithRelationInput!], cursor: ScoreWhereUniqueInput, take: Int, skip: Int, distinct: [ScoreScalarFieldEnum!]): [Score!]!
+
+  FinalInfo(where: FinalInfoWhereInput, orderBy: [FinalInfoOrderByWithRelationInput!], cursor: FinalInfoWhereUniqueInput, take: Int, skip: Int, distinct: [FinalInfoScalarFieldEnum!]): [FinalInfo!]!
+}
+
+type PlayerCount {
+  teams: Int!
+
+  scoringSessions: Int!
+
+  Score: Int!
+
+  FinalInfo: Int!
+}
+
+type Team {
+  id: Int!
+
+  createdAt: DateTime!
+
+  _count: TeamCount
+
+  players(where: PlayerWhereInput, orderBy: [PlayerOrderByWithRelationInput!], cursor: PlayerWhereUniqueInput, take: Int, skip: Int, distinct: [PlayerScalarFieldEnum!]): [Player!]!
+
+  scoringSessions(where: ScoringSessionWhereInput, orderBy: [ScoringSessionOrderByWithRelationInput!], cursor: ScoringSessionWhereUniqueInput, take: Int, skip: Int, distinct: [ScoringSessionScalarFieldEnum!]): [ScoringSession!]!
+}
+
+type TeamCount {
+  players: Int!
+
+  scoringSessions: Int!
+}
+
+input PlayerWhereUniqueInput {
+  id: Int
+}
+
+enum PlayerScalarFieldEnum {
+  id
+
+  firstName
+
+  lastName
+
+  photo
+}
+
+type ScoringSession {
+  id: Int!
+
+  eventId: Int!
+
+  currentHole: Int!
+
+  _count: ScoringSessionCount
+
+  event: Event!
+
+  players(where: PlayerWhereInput, orderBy: [PlayerOrderByWithRelationInput!], cursor: PlayerWhereUniqueInput, take: Int, skip: Int, distinct: [PlayerScalarFieldEnum!]): [Player!]!
+
+  teams(where: TeamWhereInput, orderBy: [TeamOrderByWithRelationInput!], cursor: TeamWhereUniqueInput, take: Int, skip: Int, distinct: [TeamScalarFieldEnum!]): [Team!]!
+}
+
+type ScoringSessionCount {
+  players: Int!
+
+  teams: Int!
+}
+
+input TeamOrderByWithRelationInput {
+  id: SortOrder
+
+  players: PlayerOrderByRelationAggregateInput
+
+  scoringSessions: ScoringSessionOrderByRelationAggregateInput
+
+  createdAt: SortOrder
+}
+
+input PlayerOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input TeamWhereUniqueInput {
+  id: Int
+}
+
+enum TeamScalarFieldEnum {
+  id
+
+  createdAt
+}
+
+input ScoringSessionOrderByWithRelationInput {
+  id: SortOrder
+
+  event: EventOrderByWithRelationInput
+
+  eventId: SortOrder
+
+  currentHole: SortOrder
+
+  players: PlayerOrderByRelationAggregateInput
+
+  teams: TeamOrderByRelationAggregateInput
+}
+
+input ScoringSessionWhereUniqueInput {
+  id: Int
+}
+
+enum ScoringSessionScalarFieldEnum {
+  id
+
+  eventId
+
+  currentHole
+}
+
+type Score {
+  id: Int!
+
+  resultValue: Float!
+
+  eventPoints: Float!
+
+  eventId: Int!
+
+  playerId: Int!
+
+  beers: Float!
+
+  kr: Int!
+
+  event: Event!
+
+  player: Player!
+}
+
+input ScoreOrderByWithRelationInput {
+  id: SortOrder
+
+  resultValue: SortOrder
+
+  eventPoints: SortOrder
+
+  event: EventOrderByWithRelationInput
+
+  eventId: SortOrder
+
+  player: PlayerOrderByWithRelationInput
+
+  playerId: SortOrder
+
+  beers: SortOrder
+
+  kr: SortOrder
+}
+
+input ScoreWhereUniqueInput {
+  id: Int
+}
+
+enum ScoreScalarFieldEnum {
+  id
+
+  resultValue
+
+  eventPoints
+
+  eventId
+
+  playerId
+
+  beers
+
+  kr
+}
+
+input FinalInfoWhereUniqueInput {
+  id: Int
+}
+
+enum FinalInfoScalarFieldEnum {
+  id
+
+  photo
+
+  winnerId
+
+  story
+}
+
+input SeasonWhereUniqueInput {
+  id: Int
+
+  name: String
+}
+
+enum SeasonScalarFieldEnum {
+  id
+
+  name
+
+  status
+
+  finalInfoId
 }
 
 type Hole {
@@ -35,10 +1219,1046 @@ type Hole {
   par: Int!
 
   courseId: Int!
+
+  course: Course!
 }
 
-type Player {
+input HoleOrderByWithRelationInput {
+  id: SortOrder
+
+  index: SortOrder
+
+  number: SortOrder
+
+  par: SortOrder
+
+  course: CourseOrderByWithRelationInput
+
+  courseId: SortOrder
+}
+
+input HoleWhereUniqueInput {
+  id: Int
+}
+
+enum HoleScalarFieldEnum {
+  id
+
+  index
+
+  number
+
+  par
+
+  courseId
+}
+
+input CourseWhereUniqueInput {
+  id: Int
+}
+
+enum CourseScalarFieldEnum {
+  id
+
+  club
+
+  name
+
+  par
+}
+
+type AggregateCourse {
+  _count: CourseCountAggregate
+
+  _avg: CourseAvgAggregate
+
+  _sum: CourseSumAggregate
+
+  _min: CourseMinAggregate
+
+  _max: CourseMaxAggregate
+}
+
+type CourseCountAggregate {
   id: Int!
+
+  club: Int!
+
+  name: Int!
+
+  par: Int!
+
+  _all: Int!
+}
+
+type CourseAvgAggregate {
+  id: Float
+
+  par: Float
+}
+
+type CourseSumAggregate {
+  id: Int
+
+  par: Int
+}
+
+type CourseMinAggregate {
+  id: Int
+
+  club: String
+
+  name: String
+
+  par: Int
+}
+
+type CourseMaxAggregate {
+  id: Int
+
+  club: String
+
+  name: String
+
+  par: Int
+}
+
+type CourseGroupBy {
+  id: Int!
+
+  club: String!
+
+  name: String!
+
+  par: Int!
+
+  _count: CourseCountAggregate
+
+  _avg: CourseAvgAggregate
+
+  _sum: CourseSumAggregate
+
+  _min: CourseMinAggregate
+
+  _max: CourseMaxAggregate
+}
+
+input CourseOrderByWithAggregationInput {
+  id: SortOrder
+
+  club: SortOrder
+
+  name: SortOrder
+
+  par: SortOrder
+
+  _count: CourseCountOrderByAggregateInput
+
+  _avg: CourseAvgOrderByAggregateInput
+
+  _max: CourseMaxOrderByAggregateInput
+
+  _min: CourseMinOrderByAggregateInput
+
+  _sum: CourseSumOrderByAggregateInput
+}
+
+input CourseCountOrderByAggregateInput {
+  id: SortOrder
+
+  club: SortOrder
+
+  name: SortOrder
+
+  par: SortOrder
+}
+
+input CourseAvgOrderByAggregateInput {
+  id: SortOrder
+
+  par: SortOrder
+}
+
+input CourseMaxOrderByAggregateInput {
+  id: SortOrder
+
+  club: SortOrder
+
+  name: SortOrder
+
+  par: SortOrder
+}
+
+input CourseMinOrderByAggregateInput {
+  id: SortOrder
+
+  club: SortOrder
+
+  name: SortOrder
+
+  par: SortOrder
+}
+
+input CourseSumOrderByAggregateInput {
+  id: SortOrder
+
+  par: SortOrder
+}
+
+input CourseScalarWhereWithAggregatesInput {
+  AND: [CourseScalarWhereWithAggregatesInput!]
+
+  OR: [CourseScalarWhereWithAggregatesInput!]
+
+  NOT: [CourseScalarWhereWithAggregatesInput!]
+
+  id: IntWithAggregatesFilter
+
+  club: StringWithAggregatesFilter
+
+  name: StringWithAggregatesFilter
+
+  par: IntWithAggregatesFilter
+}
+
+input IntWithAggregatesFilter {
+  equals: Int
+
+  in: [Int!]
+
+  notIn: [Int!]
+
+  lt: Int
+
+  lte: Int
+
+  gt: Int
+
+  gte: Int
+
+  not: NestedIntWithAggregatesFilter
+
+  _count: NestedIntFilter
+
+  _avg: NestedFloatFilter
+
+  _sum: NestedIntFilter
+
+  _min: NestedIntFilter
+
+  _max: NestedIntFilter
+}
+
+input NestedIntWithAggregatesFilter {
+  equals: Int
+
+  in: [Int!]
+
+  notIn: [Int!]
+
+  lt: Int
+
+  lte: Int
+
+  gt: Int
+
+  gte: Int
+
+  not: NestedIntWithAggregatesFilter
+
+  _count: NestedIntFilter
+
+  _avg: NestedFloatFilter
+
+  _sum: NestedIntFilter
+
+  _min: NestedIntFilter
+
+  _max: NestedIntFilter
+}
+
+input StringWithAggregatesFilter {
+  equals: String
+
+  in: [String!]
+
+  notIn: [String!]
+
+  lt: String
+
+  lte: String
+
+  gt: String
+
+  gte: String
+
+  contains: String
+
+  startsWith: String
+
+  endsWith: String
+
+  mode: QueryMode
+
+  not: NestedStringWithAggregatesFilter
+
+  _count: NestedIntFilter
+
+  _min: NestedStringFilter
+
+  _max: NestedStringFilter
+}
+
+input NestedStringWithAggregatesFilter {
+  equals: String
+
+  in: [String!]
+
+  notIn: [String!]
+
+  lt: String
+
+  lte: String
+
+  gt: String
+
+  gte: String
+
+  contains: String
+
+  startsWith: String
+
+  endsWith: String
+
+  not: NestedStringWithAggregatesFilter
+
+  _count: NestedIntFilter
+
+  _min: NestedStringFilter
+
+  _max: NestedStringFilter
+}
+
+type AggregateEvent {
+  _count: EventCountAggregate
+
+  _avg: EventAvgAggregate
+
+  _sum: EventSumAggregate
+
+  _min: EventMinAggregate
+
+  _max: EventMaxAggregate
+}
+
+type EventCountAggregate {
+  id: Int!
+
+  special: Int!
+
+  scoring: Int!
+
+  status: Int!
+
+  type: Int!
+
+  courseId: Int!
+
+  seasonId: Int!
+
+  _all: Int!
+}
+
+type EventAvgAggregate {
+  id: Float
+
+  courseId: Float
+
+  seasonId: Float
+}
+
+type EventSumAggregate {
+  id: Int
+
+  courseId: Int
+
+  seasonId: Int
+}
+
+type EventMinAggregate {
+  id: Int
+
+  special: Boolean
+
+  scoring: EventScoring
+
+  status: EventStatus
+
+  type: EventType
+
+  courseId: Int
+
+  seasonId: Int
+}
+
+type EventMaxAggregate {
+  id: Int
+
+  special: Boolean
+
+  scoring: EventScoring
+
+  status: EventStatus
+
+  type: EventType
+
+  courseId: Int
+
+  seasonId: Int
+}
+
+type EventGroupBy {
+  id: Int!
+
+  special: Boolean!
+
+  scoring: EventScoring!
+
+  status: EventStatus!
+
+  type: EventType!
+
+  courseId: Int!
+
+  seasonId: Int!
+
+  _count: EventCountAggregate
+
+  _avg: EventAvgAggregate
+
+  _sum: EventSumAggregate
+
+  _min: EventMinAggregate
+
+  _max: EventMaxAggregate
+}
+
+input EventOrderByWithAggregationInput {
+  id: SortOrder
+
+  special: SortOrder
+
+  scoring: SortOrder
+
+  status: SortOrder
+
+  type: SortOrder
+
+  courseId: SortOrder
+
+  seasonId: SortOrder
+
+  _count: EventCountOrderByAggregateInput
+
+  _avg: EventAvgOrderByAggregateInput
+
+  _max: EventMaxOrderByAggregateInput
+
+  _min: EventMinOrderByAggregateInput
+
+  _sum: EventSumOrderByAggregateInput
+}
+
+input EventCountOrderByAggregateInput {
+  id: SortOrder
+
+  special: SortOrder
+
+  scoring: SortOrder
+
+  status: SortOrder
+
+  type: SortOrder
+
+  courseId: SortOrder
+
+  seasonId: SortOrder
+}
+
+input EventAvgOrderByAggregateInput {
+  id: SortOrder
+
+  courseId: SortOrder
+
+  seasonId: SortOrder
+}
+
+input EventMaxOrderByAggregateInput {
+  id: SortOrder
+
+  special: SortOrder
+
+  scoring: SortOrder
+
+  status: SortOrder
+
+  type: SortOrder
+
+  courseId: SortOrder
+
+  seasonId: SortOrder
+}
+
+input EventMinOrderByAggregateInput {
+  id: SortOrder
+
+  special: SortOrder
+
+  scoring: SortOrder
+
+  status: SortOrder
+
+  type: SortOrder
+
+  courseId: SortOrder
+
+  seasonId: SortOrder
+}
+
+input EventSumOrderByAggregateInput {
+  id: SortOrder
+
+  courseId: SortOrder
+
+  seasonId: SortOrder
+}
+
+input EventScalarWhereWithAggregatesInput {
+  AND: [EventScalarWhereWithAggregatesInput!]
+
+  OR: [EventScalarWhereWithAggregatesInput!]
+
+  NOT: [EventScalarWhereWithAggregatesInput!]
+
+  id: IntWithAggregatesFilter
+
+  special: BoolWithAggregatesFilter
+
+  scoring: EnumEventScoringWithAggregatesFilter
+
+  status: EnumEventStatusWithAggregatesFilter
+
+  type: EnumEventTypeWithAggregatesFilter
+
+  courseId: IntWithAggregatesFilter
+
+  seasonId: IntWithAggregatesFilter
+}
+
+input BoolWithAggregatesFilter {
+  equals: Boolean
+
+  not: NestedBoolWithAggregatesFilter
+
+  _count: NestedIntFilter
+
+  _min: NestedBoolFilter
+
+  _max: NestedBoolFilter
+}
+
+input NestedBoolWithAggregatesFilter {
+  equals: Boolean
+
+  not: NestedBoolWithAggregatesFilter
+
+  _count: NestedIntFilter
+
+  _min: NestedBoolFilter
+
+  _max: NestedBoolFilter
+}
+
+input EnumEventScoringWithAggregatesFilter {
+  equals: EventScoring
+
+  in: [EventScoring!]
+
+  notIn: [EventScoring!]
+
+  not: NestedEnumEventScoringWithAggregatesFilter
+
+  _count: NestedIntFilter
+
+  _min: NestedEnumEventScoringFilter
+
+  _max: NestedEnumEventScoringFilter
+}
+
+input NestedEnumEventScoringWithAggregatesFilter {
+  equals: EventScoring
+
+  in: [EventScoring!]
+
+  notIn: [EventScoring!]
+
+  not: NestedEnumEventScoringWithAggregatesFilter
+
+  _count: NestedIntFilter
+
+  _min: NestedEnumEventScoringFilter
+
+  _max: NestedEnumEventScoringFilter
+}
+
+input EnumEventStatusWithAggregatesFilter {
+  equals: EventStatus
+
+  in: [EventStatus!]
+
+  notIn: [EventStatus!]
+
+  not: NestedEnumEventStatusWithAggregatesFilter
+
+  _count: NestedIntFilter
+
+  _min: NestedEnumEventStatusFilter
+
+  _max: NestedEnumEventStatusFilter
+}
+
+input NestedEnumEventStatusWithAggregatesFilter {
+  equals: EventStatus
+
+  in: [EventStatus!]
+
+  notIn: [EventStatus!]
+
+  not: NestedEnumEventStatusWithAggregatesFilter
+
+  _count: NestedIntFilter
+
+  _min: NestedEnumEventStatusFilter
+
+  _max: NestedEnumEventStatusFilter
+}
+
+input EnumEventTypeWithAggregatesFilter {
+  equals: EventType
+
+  in: [EventType!]
+
+  notIn: [EventType!]
+
+  not: NestedEnumEventTypeWithAggregatesFilter
+
+  _count: NestedIntFilter
+
+  _min: NestedEnumEventTypeFilter
+
+  _max: NestedEnumEventTypeFilter
+}
+
+input NestedEnumEventTypeWithAggregatesFilter {
+  equals: EventType
+
+  in: [EventType!]
+
+  notIn: [EventType!]
+
+  not: NestedEnumEventTypeWithAggregatesFilter
+
+  _count: NestedIntFilter
+
+  _min: NestedEnumEventTypeFilter
+
+  _max: NestedEnumEventTypeFilter
+}
+
+type AggregateFinalInfo {
+  _count: FinalInfoCountAggregate
+
+  _avg: FinalInfoAvgAggregate
+
+  _sum: FinalInfoSumAggregate
+
+  _min: FinalInfoMinAggregate
+
+  _max: FinalInfoMaxAggregate
+}
+
+type FinalInfoCountAggregate {
+  id: Int!
+
+  photo: Int!
+
+  winnerId: Int!
+
+  story: Int!
+
+  _all: Int!
+}
+
+type FinalInfoAvgAggregate {
+  id: Float
+
+  winnerId: Float
+}
+
+type FinalInfoSumAggregate {
+  id: Int
+
+  winnerId: Int
+}
+
+type FinalInfoMinAggregate {
+  id: Int
+
+  photo: String
+
+  winnerId: Int
+
+  story: String
+}
+
+type FinalInfoMaxAggregate {
+  id: Int
+
+  photo: String
+
+  winnerId: Int
+
+  story: String
+}
+
+type FinalInfoGroupBy {
+  id: Int!
+
+  photo: String!
+
+  winnerId: Int!
+
+  story: String!
+
+  _count: FinalInfoCountAggregate
+
+  _avg: FinalInfoAvgAggregate
+
+  _sum: FinalInfoSumAggregate
+
+  _min: FinalInfoMinAggregate
+
+  _max: FinalInfoMaxAggregate
+}
+
+input FinalInfoOrderByWithAggregationInput {
+  id: SortOrder
+
+  photo: SortOrder
+
+  winnerId: SortOrder
+
+  story: SortOrder
+
+  _count: FinalInfoCountOrderByAggregateInput
+
+  _avg: FinalInfoAvgOrderByAggregateInput
+
+  _max: FinalInfoMaxOrderByAggregateInput
+
+  _min: FinalInfoMinOrderByAggregateInput
+
+  _sum: FinalInfoSumOrderByAggregateInput
+}
+
+input FinalInfoCountOrderByAggregateInput {
+  id: SortOrder
+
+  photo: SortOrder
+
+  winnerId: SortOrder
+
+  story: SortOrder
+}
+
+input FinalInfoAvgOrderByAggregateInput {
+  id: SortOrder
+
+  winnerId: SortOrder
+}
+
+input FinalInfoMaxOrderByAggregateInput {
+  id: SortOrder
+
+  photo: SortOrder
+
+  winnerId: SortOrder
+
+  story: SortOrder
+}
+
+input FinalInfoMinOrderByAggregateInput {
+  id: SortOrder
+
+  photo: SortOrder
+
+  winnerId: SortOrder
+
+  story: SortOrder
+}
+
+input FinalInfoSumOrderByAggregateInput {
+  id: SortOrder
+
+  winnerId: SortOrder
+}
+
+input FinalInfoScalarWhereWithAggregatesInput {
+  AND: [FinalInfoScalarWhereWithAggregatesInput!]
+
+  OR: [FinalInfoScalarWhereWithAggregatesInput!]
+
+  NOT: [FinalInfoScalarWhereWithAggregatesInput!]
+
+  id: IntWithAggregatesFilter
+
+  photo: StringWithAggregatesFilter
+
+  winnerId: IntWithAggregatesFilter
+
+  story: StringWithAggregatesFilter
+}
+
+type AggregateHole {
+  _count: HoleCountAggregate
+
+  _avg: HoleAvgAggregate
+
+  _sum: HoleSumAggregate
+
+  _min: HoleMinAggregate
+
+  _max: HoleMaxAggregate
+}
+
+type HoleCountAggregate {
+  id: Int!
+
+  index: Int!
+
+  number: Int!
+
+  par: Int!
+
+  courseId: Int!
+
+  _all: Int!
+}
+
+type HoleAvgAggregate {
+  id: Float
+
+  index: Float
+
+  number: Float
+
+  par: Float
+
+  courseId: Float
+}
+
+type HoleSumAggregate {
+  id: Int
+
+  index: Int
+
+  number: Int
+
+  par: Int
+
+  courseId: Int
+}
+
+type HoleMinAggregate {
+  id: Int
+
+  index: Int
+
+  number: Int
+
+  par: Int
+
+  courseId: Int
+}
+
+type HoleMaxAggregate {
+  id: Int
+
+  index: Int
+
+  number: Int
+
+  par: Int
+
+  courseId: Int
+}
+
+type HoleGroupBy {
+  id: Int!
+
+  index: Int!
+
+  number: Int!
+
+  par: Int!
+
+  courseId: Int!
+
+  _count: HoleCountAggregate
+
+  _avg: HoleAvgAggregate
+
+  _sum: HoleSumAggregate
+
+  _min: HoleMinAggregate
+
+  _max: HoleMaxAggregate
+}
+
+input HoleOrderByWithAggregationInput {
+  id: SortOrder
+
+  index: SortOrder
+
+  number: SortOrder
+
+  par: SortOrder
+
+  courseId: SortOrder
+
+  _count: HoleCountOrderByAggregateInput
+
+  _avg: HoleAvgOrderByAggregateInput
+
+  _max: HoleMaxOrderByAggregateInput
+
+  _min: HoleMinOrderByAggregateInput
+
+  _sum: HoleSumOrderByAggregateInput
+}
+
+input HoleCountOrderByAggregateInput {
+  id: SortOrder
+
+  index: SortOrder
+
+  number: SortOrder
+
+  par: SortOrder
+
+  courseId: SortOrder
+}
+
+input HoleAvgOrderByAggregateInput {
+  id: SortOrder
+
+  index: SortOrder
+
+  number: SortOrder
+
+  par: SortOrder
+
+  courseId: SortOrder
+}
+
+input HoleMaxOrderByAggregateInput {
+  id: SortOrder
+
+  index: SortOrder
+
+  number: SortOrder
+
+  par: SortOrder
+
+  courseId: SortOrder
+}
+
+input HoleMinOrderByAggregateInput {
+  id: SortOrder
+
+  index: SortOrder
+
+  number: SortOrder
+
+  par: SortOrder
+
+  courseId: SortOrder
+}
+
+input HoleSumOrderByAggregateInput {
+  id: SortOrder
+
+  index: SortOrder
+
+  number: SortOrder
+
+  par: SortOrder
+
+  courseId: SortOrder
+}
+
+input HoleScalarWhereWithAggregatesInput {
+  AND: [HoleScalarWhereWithAggregatesInput!]
+
+  OR: [HoleScalarWhereWithAggregatesInput!]
+
+  NOT: [HoleScalarWhereWithAggregatesInput!]
+
+  id: IntWithAggregatesFilter
+
+  index: IntWithAggregatesFilter
+
+  number: IntWithAggregatesFilter
+
+  par: IntWithAggregatesFilter
+
+  courseId: IntWithAggregatesFilter
+}
+
+type AggregatePlayer {
+  _count: PlayerCountAggregate
+
+  _avg: PlayerAvgAggregate
+
+  _sum: PlayerSumAggregate
+
+  _min: PlayerMinAggregate
+
+  _max: PlayerMaxAggregate
+}
+
+type PlayerCountAggregate {
+  id: Int!
+
+  firstName: Int!
+
+  lastName: Int!
+
+  photo: Int!
+
+  _all: Int!
+}
+
+type PlayerAvgAggregate {
+  id: Float
+}
+
+type PlayerSumAggregate {
+  id: Int
+}
+
+type PlayerMinAggregate {
+  id: Int
 
   firstName: String
 
@@ -47,10 +2267,3430 @@ type Player {
   photo: String
 }
 
+type PlayerMaxAggregate {
+  id: Int
+
+  firstName: String
+
+  lastName: String
+
+  photo: String
+}
+
+type PlayerGroupBy {
+  id: Int!
+
+  firstName: String!
+
+  lastName: String!
+
+  photo: String
+
+  _count: PlayerCountAggregate
+
+  _avg: PlayerAvgAggregate
+
+  _sum: PlayerSumAggregate
+
+  _min: PlayerMinAggregate
+
+  _max: PlayerMaxAggregate
+}
+
+input PlayerOrderByWithAggregationInput {
+  id: SortOrder
+
+  firstName: SortOrder
+
+  lastName: SortOrder
+
+  photo: SortOrder
+
+  _count: PlayerCountOrderByAggregateInput
+
+  _avg: PlayerAvgOrderByAggregateInput
+
+  _max: PlayerMaxOrderByAggregateInput
+
+  _min: PlayerMinOrderByAggregateInput
+
+  _sum: PlayerSumOrderByAggregateInput
+}
+
+input PlayerCountOrderByAggregateInput {
+  id: SortOrder
+
+  firstName: SortOrder
+
+  lastName: SortOrder
+
+  photo: SortOrder
+}
+
+input PlayerAvgOrderByAggregateInput {
+  id: SortOrder
+}
+
+input PlayerMaxOrderByAggregateInput {
+  id: SortOrder
+
+  firstName: SortOrder
+
+  lastName: SortOrder
+
+  photo: SortOrder
+}
+
+input PlayerMinOrderByAggregateInput {
+  id: SortOrder
+
+  firstName: SortOrder
+
+  lastName: SortOrder
+
+  photo: SortOrder
+}
+
+input PlayerSumOrderByAggregateInput {
+  id: SortOrder
+}
+
+input PlayerScalarWhereWithAggregatesInput {
+  AND: [PlayerScalarWhereWithAggregatesInput!]
+
+  OR: [PlayerScalarWhereWithAggregatesInput!]
+
+  NOT: [PlayerScalarWhereWithAggregatesInput!]
+
+  id: IntWithAggregatesFilter
+
+  firstName: StringWithAggregatesFilter
+
+  lastName: StringWithAggregatesFilter
+
+  photo: StringNullableWithAggregatesFilter
+}
+
+input StringNullableWithAggregatesFilter {
+  equals: String
+
+  in: [String!]
+
+  notIn: [String!]
+
+  lt: String
+
+  lte: String
+
+  gt: String
+
+  gte: String
+
+  contains: String
+
+  startsWith: String
+
+  endsWith: String
+
+  mode: QueryMode
+
+  not: NestedStringNullableWithAggregatesFilter
+
+  _count: NestedIntNullableFilter
+
+  _min: NestedStringNullableFilter
+
+  _max: NestedStringNullableFilter
+}
+
+input NestedStringNullableWithAggregatesFilter {
+  equals: String
+
+  in: [String!]
+
+  notIn: [String!]
+
+  lt: String
+
+  lte: String
+
+  gt: String
+
+  gte: String
+
+  contains: String
+
+  startsWith: String
+
+  endsWith: String
+
+  not: NestedStringNullableWithAggregatesFilter
+
+  _count: NestedIntNullableFilter
+
+  _min: NestedStringNullableFilter
+
+  _max: NestedStringNullableFilter
+}
+
+type AggregateScore {
+  _count: ScoreCountAggregate
+
+  _avg: ScoreAvgAggregate
+
+  _sum: ScoreSumAggregate
+
+  _min: ScoreMinAggregate
+
+  _max: ScoreMaxAggregate
+}
+
+type ScoreCountAggregate {
+  id: Int!
+
+  resultValue: Int!
+
+  eventPoints: Int!
+
+  eventId: Int!
+
+  playerId: Int!
+
+  beers: Int!
+
+  kr: Int!
+
+  _all: Int!
+}
+
+type ScoreAvgAggregate {
+  id: Float
+
+  resultValue: Float
+
+  eventPoints: Float
+
+  eventId: Float
+
+  playerId: Float
+
+  beers: Float
+
+  kr: Float
+}
+
+type ScoreSumAggregate {
+  id: Int
+
+  resultValue: Float
+
+  eventPoints: Float
+
+  eventId: Int
+
+  playerId: Int
+
+  beers: Float
+
+  kr: Int
+}
+
+type ScoreMinAggregate {
+  id: Int
+
+  resultValue: Float
+
+  eventPoints: Float
+
+  eventId: Int
+
+  playerId: Int
+
+  beers: Float
+
+  kr: Int
+}
+
+type ScoreMaxAggregate {
+  id: Int
+
+  resultValue: Float
+
+  eventPoints: Float
+
+  eventId: Int
+
+  playerId: Int
+
+  beers: Float
+
+  kr: Int
+}
+
+type ScoreGroupBy {
+  id: Int!
+
+  resultValue: Float!
+
+  eventPoints: Float!
+
+  eventId: Int!
+
+  playerId: Int!
+
+  beers: Float!
+
+  kr: Int!
+
+  _count: ScoreCountAggregate
+
+  _avg: ScoreAvgAggregate
+
+  _sum: ScoreSumAggregate
+
+  _min: ScoreMinAggregate
+
+  _max: ScoreMaxAggregate
+}
+
+input ScoreOrderByWithAggregationInput {
+  id: SortOrder
+
+  resultValue: SortOrder
+
+  eventPoints: SortOrder
+
+  eventId: SortOrder
+
+  playerId: SortOrder
+
+  beers: SortOrder
+
+  kr: SortOrder
+
+  _count: ScoreCountOrderByAggregateInput
+
+  _avg: ScoreAvgOrderByAggregateInput
+
+  _max: ScoreMaxOrderByAggregateInput
+
+  _min: ScoreMinOrderByAggregateInput
+
+  _sum: ScoreSumOrderByAggregateInput
+}
+
+input ScoreCountOrderByAggregateInput {
+  id: SortOrder
+
+  resultValue: SortOrder
+
+  eventPoints: SortOrder
+
+  eventId: SortOrder
+
+  playerId: SortOrder
+
+  beers: SortOrder
+
+  kr: SortOrder
+}
+
+input ScoreAvgOrderByAggregateInput {
+  id: SortOrder
+
+  resultValue: SortOrder
+
+  eventPoints: SortOrder
+
+  eventId: SortOrder
+
+  playerId: SortOrder
+
+  beers: SortOrder
+
+  kr: SortOrder
+}
+
+input ScoreMaxOrderByAggregateInput {
+  id: SortOrder
+
+  resultValue: SortOrder
+
+  eventPoints: SortOrder
+
+  eventId: SortOrder
+
+  playerId: SortOrder
+
+  beers: SortOrder
+
+  kr: SortOrder
+}
+
+input ScoreMinOrderByAggregateInput {
+  id: SortOrder
+
+  resultValue: SortOrder
+
+  eventPoints: SortOrder
+
+  eventId: SortOrder
+
+  playerId: SortOrder
+
+  beers: SortOrder
+
+  kr: SortOrder
+}
+
+input ScoreSumOrderByAggregateInput {
+  id: SortOrder
+
+  resultValue: SortOrder
+
+  eventPoints: SortOrder
+
+  eventId: SortOrder
+
+  playerId: SortOrder
+
+  beers: SortOrder
+
+  kr: SortOrder
+}
+
+input ScoreScalarWhereWithAggregatesInput {
+  AND: [ScoreScalarWhereWithAggregatesInput!]
+
+  OR: [ScoreScalarWhereWithAggregatesInput!]
+
+  NOT: [ScoreScalarWhereWithAggregatesInput!]
+
+  id: IntWithAggregatesFilter
+
+  resultValue: FloatWithAggregatesFilter
+
+  eventPoints: FloatWithAggregatesFilter
+
+  eventId: IntWithAggregatesFilter
+
+  playerId: IntWithAggregatesFilter
+
+  beers: FloatWithAggregatesFilter
+
+  kr: IntWithAggregatesFilter
+}
+
+input FloatWithAggregatesFilter {
+  equals: Float
+
+  in: [Float!]
+
+  notIn: [Float!]
+
+  lt: Float
+
+  lte: Float
+
+  gt: Float
+
+  gte: Float
+
+  not: NestedFloatWithAggregatesFilter
+
+  _count: NestedIntFilter
+
+  _avg: NestedFloatFilter
+
+  _sum: NestedFloatFilter
+
+  _min: NestedFloatFilter
+
+  _max: NestedFloatFilter
+}
+
+input NestedFloatWithAggregatesFilter {
+  equals: Float
+
+  in: [Float!]
+
+  notIn: [Float!]
+
+  lt: Float
+
+  lte: Float
+
+  gt: Float
+
+  gte: Float
+
+  not: NestedFloatWithAggregatesFilter
+
+  _count: NestedIntFilter
+
+  _avg: NestedFloatFilter
+
+  _sum: NestedFloatFilter
+
+  _min: NestedFloatFilter
+
+  _max: NestedFloatFilter
+}
+
+type AggregateScoringSession {
+  _count: ScoringSessionCountAggregate
+
+  _avg: ScoringSessionAvgAggregate
+
+  _sum: ScoringSessionSumAggregate
+
+  _min: ScoringSessionMinAggregate
+
+  _max: ScoringSessionMaxAggregate
+}
+
+type ScoringSessionCountAggregate {
+  id: Int!
+
+  eventId: Int!
+
+  currentHole: Int!
+
+  _all: Int!
+}
+
+type ScoringSessionAvgAggregate {
+  id: Float
+
+  eventId: Float
+
+  currentHole: Float
+}
+
+type ScoringSessionSumAggregate {
+  id: Int
+
+  eventId: Int
+
+  currentHole: Int
+}
+
+type ScoringSessionMinAggregate {
+  id: Int
+
+  eventId: Int
+
+  currentHole: Int
+}
+
+type ScoringSessionMaxAggregate {
+  id: Int
+
+  eventId: Int
+
+  currentHole: Int
+}
+
+type ScoringSessionGroupBy {
+  id: Int!
+
+  eventId: Int!
+
+  currentHole: Int!
+
+  _count: ScoringSessionCountAggregate
+
+  _avg: ScoringSessionAvgAggregate
+
+  _sum: ScoringSessionSumAggregate
+
+  _min: ScoringSessionMinAggregate
+
+  _max: ScoringSessionMaxAggregate
+}
+
+input ScoringSessionOrderByWithAggregationInput {
+  id: SortOrder
+
+  eventId: SortOrder
+
+  currentHole: SortOrder
+
+  _count: ScoringSessionCountOrderByAggregateInput
+
+  _avg: ScoringSessionAvgOrderByAggregateInput
+
+  _max: ScoringSessionMaxOrderByAggregateInput
+
+  _min: ScoringSessionMinOrderByAggregateInput
+
+  _sum: ScoringSessionSumOrderByAggregateInput
+}
+
+input ScoringSessionCountOrderByAggregateInput {
+  id: SortOrder
+
+  eventId: SortOrder
+
+  currentHole: SortOrder
+}
+
+input ScoringSessionAvgOrderByAggregateInput {
+  id: SortOrder
+
+  eventId: SortOrder
+
+  currentHole: SortOrder
+}
+
+input ScoringSessionMaxOrderByAggregateInput {
+  id: SortOrder
+
+  eventId: SortOrder
+
+  currentHole: SortOrder
+}
+
+input ScoringSessionMinOrderByAggregateInput {
+  id: SortOrder
+
+  eventId: SortOrder
+
+  currentHole: SortOrder
+}
+
+input ScoringSessionSumOrderByAggregateInput {
+  id: SortOrder
+
+  eventId: SortOrder
+
+  currentHole: SortOrder
+}
+
+input ScoringSessionScalarWhereWithAggregatesInput {
+  AND: [ScoringSessionScalarWhereWithAggregatesInput!]
+
+  OR: [ScoringSessionScalarWhereWithAggregatesInput!]
+
+  NOT: [ScoringSessionScalarWhereWithAggregatesInput!]
+
+  id: IntWithAggregatesFilter
+
+  eventId: IntWithAggregatesFilter
+
+  currentHole: IntWithAggregatesFilter
+}
+
+type AggregateSeason {
+  _count: SeasonCountAggregate
+
+  _avg: SeasonAvgAggregate
+
+  _sum: SeasonSumAggregate
+
+  _min: SeasonMinAggregate
+
+  _max: SeasonMaxAggregate
+}
+
+type SeasonCountAggregate {
+  id: Int!
+
+  name: Int!
+
+  status: Int!
+
+  finalInfoId: Int!
+
+  _all: Int!
+}
+
+type SeasonAvgAggregate {
+  id: Float
+
+  finalInfoId: Float
+}
+
+type SeasonSumAggregate {
+  id: Int
+
+  finalInfoId: Int
+}
+
+type SeasonMinAggregate {
+  id: Int
+
+  name: String
+
+  status: SeasonStatus
+
+  finalInfoId: Int
+}
+
+type SeasonMaxAggregate {
+  id: Int
+
+  name: String
+
+  status: SeasonStatus
+
+  finalInfoId: Int
+}
+
+type SeasonGroupBy {
+  id: Int!
+
+  name: String!
+
+  status: SeasonStatus!
+
+  finalInfoId: Int
+
+  _count: SeasonCountAggregate
+
+  _avg: SeasonAvgAggregate
+
+  _sum: SeasonSumAggregate
+
+  _min: SeasonMinAggregate
+
+  _max: SeasonMaxAggregate
+}
+
+input SeasonOrderByWithAggregationInput {
+  id: SortOrder
+
+  name: SortOrder
+
+  status: SortOrder
+
+  finalInfoId: SortOrder
+
+  _count: SeasonCountOrderByAggregateInput
+
+  _avg: SeasonAvgOrderByAggregateInput
+
+  _max: SeasonMaxOrderByAggregateInput
+
+  _min: SeasonMinOrderByAggregateInput
+
+  _sum: SeasonSumOrderByAggregateInput
+}
+
+input SeasonCountOrderByAggregateInput {
+  id: SortOrder
+
+  name: SortOrder
+
+  status: SortOrder
+
+  finalInfoId: SortOrder
+}
+
+input SeasonAvgOrderByAggregateInput {
+  id: SortOrder
+
+  finalInfoId: SortOrder
+}
+
+input SeasonMaxOrderByAggregateInput {
+  id: SortOrder
+
+  name: SortOrder
+
+  status: SortOrder
+
+  finalInfoId: SortOrder
+}
+
+input SeasonMinOrderByAggregateInput {
+  id: SortOrder
+
+  name: SortOrder
+
+  status: SortOrder
+
+  finalInfoId: SortOrder
+}
+
+input SeasonSumOrderByAggregateInput {
+  id: SortOrder
+
+  finalInfoId: SortOrder
+}
+
+input SeasonScalarWhereWithAggregatesInput {
+  AND: [SeasonScalarWhereWithAggregatesInput!]
+
+  OR: [SeasonScalarWhereWithAggregatesInput!]
+
+  NOT: [SeasonScalarWhereWithAggregatesInput!]
+
+  id: IntWithAggregatesFilter
+
+  name: StringWithAggregatesFilter
+
+  status: EnumSeasonStatusWithAggregatesFilter
+
+  finalInfoId: IntNullableWithAggregatesFilter
+}
+
+input EnumSeasonStatusWithAggregatesFilter {
+  equals: SeasonStatus
+
+  in: [SeasonStatus!]
+
+  notIn: [SeasonStatus!]
+
+  not: NestedEnumSeasonStatusWithAggregatesFilter
+
+  _count: NestedIntFilter
+
+  _min: NestedEnumSeasonStatusFilter
+
+  _max: NestedEnumSeasonStatusFilter
+}
+
+input NestedEnumSeasonStatusWithAggregatesFilter {
+  equals: SeasonStatus
+
+  in: [SeasonStatus!]
+
+  notIn: [SeasonStatus!]
+
+  not: NestedEnumSeasonStatusWithAggregatesFilter
+
+  _count: NestedIntFilter
+
+  _min: NestedEnumSeasonStatusFilter
+
+  _max: NestedEnumSeasonStatusFilter
+}
+
+input IntNullableWithAggregatesFilter {
+  equals: Int
+
+  in: [Int!]
+
+  notIn: [Int!]
+
+  lt: Int
+
+  lte: Int
+
+  gt: Int
+
+  gte: Int
+
+  not: NestedIntNullableWithAggregatesFilter
+
+  _count: NestedIntNullableFilter
+
+  _avg: NestedFloatNullableFilter
+
+  _sum: NestedIntNullableFilter
+
+  _min: NestedIntNullableFilter
+
+  _max: NestedIntNullableFilter
+}
+
+input NestedIntNullableWithAggregatesFilter {
+  equals: Int
+
+  in: [Int!]
+
+  notIn: [Int!]
+
+  lt: Int
+
+  lte: Int
+
+  gt: Int
+
+  gte: Int
+
+  not: NestedIntNullableWithAggregatesFilter
+
+  _count: NestedIntNullableFilter
+
+  _avg: NestedFloatNullableFilter
+
+  _sum: NestedIntNullableFilter
+
+  _min: NestedIntNullableFilter
+
+  _max: NestedIntNullableFilter
+}
+
+input NestedFloatNullableFilter {
+  equals: Float
+
+  in: [Float!]
+
+  notIn: [Float!]
+
+  lt: Float
+
+  lte: Float
+
+  gt: Float
+
+  gte: Float
+
+  not: NestedFloatNullableFilter
+}
+
+type AggregateTeam {
+  _count: TeamCountAggregate
+
+  _avg: TeamAvgAggregate
+
+  _sum: TeamSumAggregate
+
+  _min: TeamMinAggregate
+
+  _max: TeamMaxAggregate
+}
+
+type TeamCountAggregate {
+  id: Int!
+
+  createdAt: Int!
+
+  _all: Int!
+}
+
+type TeamAvgAggregate {
+  id: Float
+}
+
+type TeamSumAggregate {
+  id: Int
+}
+
+type TeamMinAggregate {
+  id: Int
+
+  createdAt: DateTime
+}
+
+type TeamMaxAggregate {
+  id: Int
+
+  createdAt: DateTime
+}
+
+type TeamGroupBy {
+  id: Int!
+
+  createdAt: DateTime!
+
+  _count: TeamCountAggregate
+
+  _avg: TeamAvgAggregate
+
+  _sum: TeamSumAggregate
+
+  _min: TeamMinAggregate
+
+  _max: TeamMaxAggregate
+}
+
+input TeamOrderByWithAggregationInput {
+  id: SortOrder
+
+  createdAt: SortOrder
+
+  _count: TeamCountOrderByAggregateInput
+
+  _avg: TeamAvgOrderByAggregateInput
+
+  _max: TeamMaxOrderByAggregateInput
+
+  _min: TeamMinOrderByAggregateInput
+
+  _sum: TeamSumOrderByAggregateInput
+}
+
+input TeamCountOrderByAggregateInput {
+  id: SortOrder
+
+  createdAt: SortOrder
+}
+
+input TeamAvgOrderByAggregateInput {
+  id: SortOrder
+}
+
+input TeamMaxOrderByAggregateInput {
+  id: SortOrder
+
+  createdAt: SortOrder
+}
+
+input TeamMinOrderByAggregateInput {
+  id: SortOrder
+
+  createdAt: SortOrder
+}
+
+input TeamSumOrderByAggregateInput {
+  id: SortOrder
+}
+
+input TeamScalarWhereWithAggregatesInput {
+  AND: [TeamScalarWhereWithAggregatesInput!]
+
+  OR: [TeamScalarWhereWithAggregatesInput!]
+
+  NOT: [TeamScalarWhereWithAggregatesInput!]
+
+  id: IntWithAggregatesFilter
+
+  createdAt: DateTimeWithAggregatesFilter
+}
+
+input DateTimeWithAggregatesFilter {
+  equals: DateTime
+
+  in: [DateTime!]
+
+  notIn: [DateTime!]
+
+  lt: DateTime
+
+  lte: DateTime
+
+  gt: DateTime
+
+  gte: DateTime
+
+  not: NestedDateTimeWithAggregatesFilter
+
+  _count: NestedIntFilter
+
+  _min: NestedDateTimeFilter
+
+  _max: NestedDateTimeFilter
+}
+
+input NestedDateTimeWithAggregatesFilter {
+  equals: DateTime
+
+  in: [DateTime!]
+
+  notIn: [DateTime!]
+
+  lt: DateTime
+
+  lte: DateTime
+
+  gt: DateTime
+
+  gte: DateTime
+
+  not: NestedDateTimeWithAggregatesFilter
+
+  _count: NestedIntFilter
+
+  _min: NestedDateTimeFilter
+
+  _max: NestedDateTimeFilter
+}
+
+type Mutation {
+  createCourse(data: CourseCreateInput!): Course!
+
+  createManyCourse(data: [CourseCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
+
+  deleteCourse(where: CourseWhereUniqueInput!): Course
+
+  updateCourse(data: CourseUpdateInput!, where: CourseWhereUniqueInput!): Course
+
+  deleteManyCourse(where: CourseWhereInput): AffectedRowsOutput!
+
+  updateManyCourse(data: CourseUpdateManyMutationInput!, where: CourseWhereInput): AffectedRowsOutput!
+
+  upsertCourse(where: CourseWhereUniqueInput!, create: CourseCreateInput!, update: CourseUpdateInput!): Course!
+
+  createEvent(data: EventCreateInput!): Event!
+
+  createManyEvent(data: [EventCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
+
+  deleteEvent(where: EventWhereUniqueInput!): Event
+
+  updateEvent(data: EventUpdateInput!, where: EventWhereUniqueInput!): Event
+
+  deleteManyEvent(where: EventWhereInput): AffectedRowsOutput!
+
+  updateManyEvent(data: EventUpdateManyMutationInput!, where: EventWhereInput): AffectedRowsOutput!
+
+  upsertEvent(where: EventWhereUniqueInput!, create: EventCreateInput!, update: EventUpdateInput!): Event!
+
+  createFinalInfo(data: FinalInfoCreateInput!): FinalInfo!
+
+  createManyFinalInfo(data: [FinalInfoCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
+
+  deleteFinalInfo(where: FinalInfoWhereUniqueInput!): FinalInfo
+
+  updateFinalInfo(data: FinalInfoUpdateInput!, where: FinalInfoWhereUniqueInput!): FinalInfo
+
+  deleteManyFinalInfo(where: FinalInfoWhereInput): AffectedRowsOutput!
+
+  updateManyFinalInfo(data: FinalInfoUpdateManyMutationInput!, where: FinalInfoWhereInput): AffectedRowsOutput!
+
+  upsertFinalInfo(where: FinalInfoWhereUniqueInput!, create: FinalInfoCreateInput!, update: FinalInfoUpdateInput!): FinalInfo!
+
+  createHole(data: HoleCreateInput!): Hole!
+
+  createManyHole(data: [HoleCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
+
+  deleteHole(where: HoleWhereUniqueInput!): Hole
+
+  updateHole(data: HoleUpdateInput!, where: HoleWhereUniqueInput!): Hole
+
+  deleteManyHole(where: HoleWhereInput): AffectedRowsOutput!
+
+  updateManyHole(data: HoleUpdateManyMutationInput!, where: HoleWhereInput): AffectedRowsOutput!
+
+  upsertHole(where: HoleWhereUniqueInput!, create: HoleCreateInput!, update: HoleUpdateInput!): Hole!
+
+  createPlayer(data: PlayerCreateInput!): Player!
+
+  createManyPlayer(data: [PlayerCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
+
+  deletePlayer(where: PlayerWhereUniqueInput!): Player
+
+  updatePlayer(data: PlayerUpdateInput!, where: PlayerWhereUniqueInput!): Player
+
+  deleteManyPlayer(where: PlayerWhereInput): AffectedRowsOutput!
+
+  updateManyPlayer(data: PlayerUpdateManyMutationInput!, where: PlayerWhereInput): AffectedRowsOutput!
+
+  upsertPlayer(where: PlayerWhereUniqueInput!, create: PlayerCreateInput!, update: PlayerUpdateInput!): Player!
+
+  createScore(data: ScoreCreateInput!): Score!
+
+  createManyScore(data: [ScoreCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
+
+  deleteScore(where: ScoreWhereUniqueInput!): Score
+
+  updateScore(data: ScoreUpdateInput!, where: ScoreWhereUniqueInput!): Score
+
+  deleteManyScore(where: ScoreWhereInput): AffectedRowsOutput!
+
+  updateManyScore(data: ScoreUpdateManyMutationInput!, where: ScoreWhereInput): AffectedRowsOutput!
+
+  upsertScore(where: ScoreWhereUniqueInput!, create: ScoreCreateInput!, update: ScoreUpdateInput!): Score!
+
+  createScoringSession(data: ScoringSessionCreateInput!): ScoringSession!
+
+  createManyScoringSession(data: [ScoringSessionCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
+
+  deleteScoringSession(where: ScoringSessionWhereUniqueInput!): ScoringSession
+
+  updateScoringSession(data: ScoringSessionUpdateInput!, where: ScoringSessionWhereUniqueInput!): ScoringSession
+
+  deleteManyScoringSession(where: ScoringSessionWhereInput): AffectedRowsOutput!
+
+  updateManyScoringSession(data: ScoringSessionUpdateManyMutationInput!, where: ScoringSessionWhereInput): AffectedRowsOutput!
+
+  upsertScoringSession(where: ScoringSessionWhereUniqueInput!, create: ScoringSessionCreateInput!, update: ScoringSessionUpdateInput!): ScoringSession!
+
+  createSeason(data: SeasonCreateInput!): Season!
+
+  createManySeason(data: [SeasonCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
+
+  deleteSeason(where: SeasonWhereUniqueInput!): Season
+
+  updateSeason(data: SeasonUpdateInput!, where: SeasonWhereUniqueInput!): Season
+
+  deleteManySeason(where: SeasonWhereInput): AffectedRowsOutput!
+
+  updateManySeason(data: SeasonUpdateManyMutationInput!, where: SeasonWhereInput): AffectedRowsOutput!
+
+  upsertSeason(where: SeasonWhereUniqueInput!, create: SeasonCreateInput!, update: SeasonUpdateInput!): Season!
+
+  createTeam(data: TeamCreateInput!): Team!
+
+  createManyTeam(data: [TeamCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
+
+  deleteTeam(where: TeamWhereUniqueInput!): Team
+
+  updateTeam(data: TeamUpdateInput!, where: TeamWhereUniqueInput!): Team
+
+  deleteManyTeam(where: TeamWhereInput): AffectedRowsOutput!
+
+  updateManyTeam(data: TeamUpdateManyMutationInput!, where: TeamWhereInput): AffectedRowsOutput!
+
+  upsertTeam(where: TeamWhereUniqueInput!, create: TeamCreateInput!, update: TeamUpdateInput!): Team!
+}
+
+input CourseCreateInput {
+  club: String!
+
+  name: String!
+
+  par: Int
+
+  events: EventCreateNestedManyWithoutCourseInput
+
+  holes: HoleCreateNestedManyWithoutCourseInput
+}
+
+input EventCreateNestedManyWithoutCourseInput {
+  create: [EventCreateWithoutCourseInput!]
+
+  connectOrCreate: [EventCreateOrConnectWithoutCourseInput!]
+
+  createMany: EventCreateManyCourseInputEnvelope
+
+  connect: [EventWhereUniqueInput!]
+}
+
+input EventCreateWithoutCourseInput {
+  special: Boolean
+
+  scoring: EventScoring
+
+  status: EventStatus
+
+  type: EventType
+
+  season: SeasonCreateNestedOneWithoutEventsInput!
+
+  scores: ScoreCreateNestedManyWithoutEventInput
+
+  ScoringSession: ScoringSessionCreateNestedManyWithoutEventInput
+}
+
+input SeasonCreateNestedOneWithoutEventsInput {
+  create: SeasonCreateWithoutEventsInput
+
+  connectOrCreate: SeasonCreateOrConnectWithoutEventsInput
+
+  connect: SeasonWhereUniqueInput
+}
+
+input SeasonCreateWithoutEventsInput {
+  name: String!
+
+  status: SeasonStatus!
+
+  finalInfo: FinalInfoCreateNestedOneWithoutSeasonInput
+}
+
+input FinalInfoCreateNestedOneWithoutSeasonInput {
+  create: FinalInfoCreateWithoutSeasonInput
+
+  connectOrCreate: FinalInfoCreateOrConnectWithoutSeasonInput
+
+  connect: FinalInfoWhereUniqueInput
+}
+
+input FinalInfoCreateWithoutSeasonInput {
+  photo: String!
+
+  story: String!
+
+  winner: PlayerCreateNestedOneWithoutFinalInfoInput!
+}
+
+input PlayerCreateNestedOneWithoutFinalInfoInput {
+  create: PlayerCreateWithoutFinalInfoInput
+
+  connectOrCreate: PlayerCreateOrConnectWithoutFinalInfoInput
+
+  connect: PlayerWhereUniqueInput
+}
+
+input PlayerCreateWithoutFinalInfoInput {
+  firstName: String!
+
+  lastName: String!
+
+  photo: String
+
+  teams: TeamCreateNestedManyWithoutPlayersInput
+
+  scoringSessions: ScoringSessionCreateNestedManyWithoutPlayersInput
+
+  Score: ScoreCreateNestedManyWithoutPlayerInput
+}
+
+input TeamCreateNestedManyWithoutPlayersInput {
+  create: [TeamCreateWithoutPlayersInput!]
+
+  connectOrCreate: [TeamCreateOrConnectWithoutPlayersInput!]
+
+  connect: [TeamWhereUniqueInput!]
+}
+
+input TeamCreateWithoutPlayersInput {
+  createdAt: DateTime
+
+  scoringSessions: ScoringSessionCreateNestedManyWithoutTeamsInput
+}
+
+input ScoringSessionCreateNestedManyWithoutTeamsInput {
+  create: [ScoringSessionCreateWithoutTeamsInput!]
+
+  connectOrCreate: [ScoringSessionCreateOrConnectWithoutTeamsInput!]
+
+  connect: [ScoringSessionWhereUniqueInput!]
+}
+
+input ScoringSessionCreateWithoutTeamsInput {
+  currentHole: Int
+
+  event: EventCreateNestedOneWithoutScoringSessionInput!
+
+  players: PlayerCreateNestedManyWithoutScoringSessionsInput
+}
+
+input EventCreateNestedOneWithoutScoringSessionInput {
+  create: EventCreateWithoutScoringSessionInput
+
+  connectOrCreate: EventCreateOrConnectWithoutScoringSessionInput
+
+  connect: EventWhereUniqueInput
+}
+
+input EventCreateWithoutScoringSessionInput {
+  special: Boolean
+
+  scoring: EventScoring
+
+  status: EventStatus
+
+  type: EventType
+
+  course: CourseCreateNestedOneWithoutEventsInput!
+
+  season: SeasonCreateNestedOneWithoutEventsInput!
+
+  scores: ScoreCreateNestedManyWithoutEventInput
+}
+
+input CourseCreateNestedOneWithoutEventsInput {
+  create: CourseCreateWithoutEventsInput
+
+  connectOrCreate: CourseCreateOrConnectWithoutEventsInput
+
+  connect: CourseWhereUniqueInput
+}
+
+input CourseCreateWithoutEventsInput {
+  club: String!
+
+  name: String!
+
+  par: Int
+
+  holes: HoleCreateNestedManyWithoutCourseInput
+}
+
+input HoleCreateNestedManyWithoutCourseInput {
+  create: [HoleCreateWithoutCourseInput!]
+
+  connectOrCreate: [HoleCreateOrConnectWithoutCourseInput!]
+
+  createMany: HoleCreateManyCourseInputEnvelope
+
+  connect: [HoleWhereUniqueInput!]
+}
+
+input HoleCreateWithoutCourseInput {
+  index: Int!
+
+  number: Int!
+
+  par: Int!
+}
+
+input HoleCreateOrConnectWithoutCourseInput {
+  where: HoleWhereUniqueInput!
+
+  create: HoleCreateWithoutCourseInput!
+}
+
+input HoleCreateManyCourseInputEnvelope {
+  data: [HoleCreateManyCourseInput!]!
+
+  skipDuplicates: Boolean
+}
+
+input HoleCreateManyCourseInput {
+  id: Int
+
+  index: Int!
+
+  number: Int!
+
+  par: Int!
+}
+
+input CourseCreateOrConnectWithoutEventsInput {
+  where: CourseWhereUniqueInput!
+
+  create: CourseCreateWithoutEventsInput!
+}
+
+input ScoreCreateNestedManyWithoutEventInput {
+  create: [ScoreCreateWithoutEventInput!]
+
+  connectOrCreate: [ScoreCreateOrConnectWithoutEventInput!]
+
+  createMany: ScoreCreateManyEventInputEnvelope
+
+  connect: [ScoreWhereUniqueInput!]
+}
+
+input ScoreCreateWithoutEventInput {
+  resultValue: Float!
+
+  eventPoints: Float!
+
+  beers: Float
+
+  kr: Int
+
+  player: PlayerCreateNestedOneWithoutScoreInput!
+}
+
+input PlayerCreateNestedOneWithoutScoreInput {
+  create: PlayerCreateWithoutScoreInput
+
+  connectOrCreate: PlayerCreateOrConnectWithoutScoreInput
+
+  connect: PlayerWhereUniqueInput
+}
+
+input PlayerCreateWithoutScoreInput {
+  firstName: String!
+
+  lastName: String!
+
+  photo: String
+
+  teams: TeamCreateNestedManyWithoutPlayersInput
+
+  scoringSessions: ScoringSessionCreateNestedManyWithoutPlayersInput
+
+  FinalInfo: FinalInfoCreateNestedManyWithoutWinnerInput
+}
+
+input ScoringSessionCreateNestedManyWithoutPlayersInput {
+  create: [ScoringSessionCreateWithoutPlayersInput!]
+
+  connectOrCreate: [ScoringSessionCreateOrConnectWithoutPlayersInput!]
+
+  connect: [ScoringSessionWhereUniqueInput!]
+}
+
+input ScoringSessionCreateWithoutPlayersInput {
+  currentHole: Int
+
+  event: EventCreateNestedOneWithoutScoringSessionInput!
+
+  teams: TeamCreateNestedManyWithoutScoringSessionsInput
+}
+
+input TeamCreateNestedManyWithoutScoringSessionsInput {
+  create: [TeamCreateWithoutScoringSessionsInput!]
+
+  connectOrCreate: [TeamCreateOrConnectWithoutScoringSessionsInput!]
+
+  connect: [TeamWhereUniqueInput!]
+}
+
+input TeamCreateWithoutScoringSessionsInput {
+  createdAt: DateTime
+
+  players: PlayerCreateNestedManyWithoutTeamsInput
+}
+
+input PlayerCreateNestedManyWithoutTeamsInput {
+  create: [PlayerCreateWithoutTeamsInput!]
+
+  connectOrCreate: [PlayerCreateOrConnectWithoutTeamsInput!]
+
+  connect: [PlayerWhereUniqueInput!]
+}
+
+input PlayerCreateWithoutTeamsInput {
+  firstName: String!
+
+  lastName: String!
+
+  photo: String
+
+  scoringSessions: ScoringSessionCreateNestedManyWithoutPlayersInput
+
+  Score: ScoreCreateNestedManyWithoutPlayerInput
+
+  FinalInfo: FinalInfoCreateNestedManyWithoutWinnerInput
+}
+
+input ScoreCreateNestedManyWithoutPlayerInput {
+  create: [ScoreCreateWithoutPlayerInput!]
+
+  connectOrCreate: [ScoreCreateOrConnectWithoutPlayerInput!]
+
+  createMany: ScoreCreateManyPlayerInputEnvelope
+
+  connect: [ScoreWhereUniqueInput!]
+}
+
+input ScoreCreateWithoutPlayerInput {
+  resultValue: Float!
+
+  eventPoints: Float!
+
+  beers: Float
+
+  kr: Int
+
+  event: EventCreateNestedOneWithoutScoresInput!
+}
+
+input EventCreateNestedOneWithoutScoresInput {
+  create: EventCreateWithoutScoresInput
+
+  connectOrCreate: EventCreateOrConnectWithoutScoresInput
+
+  connect: EventWhereUniqueInput
+}
+
+input EventCreateWithoutScoresInput {
+  special: Boolean
+
+  scoring: EventScoring
+
+  status: EventStatus
+
+  type: EventType
+
+  course: CourseCreateNestedOneWithoutEventsInput!
+
+  season: SeasonCreateNestedOneWithoutEventsInput!
+
+  ScoringSession: ScoringSessionCreateNestedManyWithoutEventInput
+}
+
+input ScoringSessionCreateNestedManyWithoutEventInput {
+  create: [ScoringSessionCreateWithoutEventInput!]
+
+  connectOrCreate: [ScoringSessionCreateOrConnectWithoutEventInput!]
+
+  createMany: ScoringSessionCreateManyEventInputEnvelope
+
+  connect: [ScoringSessionWhereUniqueInput!]
+}
+
+input ScoringSessionCreateWithoutEventInput {
+  currentHole: Int
+
+  players: PlayerCreateNestedManyWithoutScoringSessionsInput
+
+  teams: TeamCreateNestedManyWithoutScoringSessionsInput
+}
+
+input PlayerCreateNestedManyWithoutScoringSessionsInput {
+  create: [PlayerCreateWithoutScoringSessionsInput!]
+
+  connectOrCreate: [PlayerCreateOrConnectWithoutScoringSessionsInput!]
+
+  connect: [PlayerWhereUniqueInput!]
+}
+
+input PlayerCreateWithoutScoringSessionsInput {
+  firstName: String!
+
+  lastName: String!
+
+  photo: String
+
+  teams: TeamCreateNestedManyWithoutPlayersInput
+
+  Score: ScoreCreateNestedManyWithoutPlayerInput
+
+  FinalInfo: FinalInfoCreateNestedManyWithoutWinnerInput
+}
+
+input FinalInfoCreateNestedManyWithoutWinnerInput {
+  create: [FinalInfoCreateWithoutWinnerInput!]
+
+  connectOrCreate: [FinalInfoCreateOrConnectWithoutWinnerInput!]
+
+  createMany: FinalInfoCreateManyWinnerInputEnvelope
+
+  connect: [FinalInfoWhereUniqueInput!]
+}
+
+input FinalInfoCreateWithoutWinnerInput {
+  photo: String!
+
+  story: String!
+
+  Season: SeasonCreateNestedManyWithoutFinalInfoInput
+}
+
+input SeasonCreateNestedManyWithoutFinalInfoInput {
+  create: [SeasonCreateWithoutFinalInfoInput!]
+
+  connectOrCreate: [SeasonCreateOrConnectWithoutFinalInfoInput!]
+
+  createMany: SeasonCreateManyFinalInfoInputEnvelope
+
+  connect: [SeasonWhereUniqueInput!]
+}
+
+input SeasonCreateWithoutFinalInfoInput {
+  name: String!
+
+  status: SeasonStatus!
+
+  events: EventCreateNestedManyWithoutSeasonInput
+}
+
+input EventCreateNestedManyWithoutSeasonInput {
+  create: [EventCreateWithoutSeasonInput!]
+
+  connectOrCreate: [EventCreateOrConnectWithoutSeasonInput!]
+
+  createMany: EventCreateManySeasonInputEnvelope
+
+  connect: [EventWhereUniqueInput!]
+}
+
+input EventCreateWithoutSeasonInput {
+  special: Boolean
+
+  scoring: EventScoring
+
+  status: EventStatus
+
+  type: EventType
+
+  course: CourseCreateNestedOneWithoutEventsInput!
+
+  scores: ScoreCreateNestedManyWithoutEventInput
+
+  ScoringSession: ScoringSessionCreateNestedManyWithoutEventInput
+}
+
+input EventCreateOrConnectWithoutSeasonInput {
+  where: EventWhereUniqueInput!
+
+  create: EventCreateWithoutSeasonInput!
+}
+
+input EventCreateManySeasonInputEnvelope {
+  data: [EventCreateManySeasonInput!]!
+
+  skipDuplicates: Boolean
+}
+
+input EventCreateManySeasonInput {
+  id: Int
+
+  special: Boolean
+
+  scoring: EventScoring
+
+  status: EventStatus
+
+  type: EventType
+
+  courseId: Int!
+}
+
+input SeasonCreateOrConnectWithoutFinalInfoInput {
+  where: SeasonWhereUniqueInput!
+
+  create: SeasonCreateWithoutFinalInfoInput!
+}
+
+input SeasonCreateManyFinalInfoInputEnvelope {
+  data: [SeasonCreateManyFinalInfoInput!]!
+
+  skipDuplicates: Boolean
+}
+
+input SeasonCreateManyFinalInfoInput {
+  id: Int
+
+  name: String!
+
+  status: SeasonStatus!
+}
+
+input FinalInfoCreateOrConnectWithoutWinnerInput {
+  where: FinalInfoWhereUniqueInput!
+
+  create: FinalInfoCreateWithoutWinnerInput!
+}
+
+input FinalInfoCreateManyWinnerInputEnvelope {
+  data: [FinalInfoCreateManyWinnerInput!]!
+
+  skipDuplicates: Boolean
+}
+
+input FinalInfoCreateManyWinnerInput {
+  id: Int
+
+  photo: String!
+
+  story: String!
+}
+
+input PlayerCreateOrConnectWithoutScoringSessionsInput {
+  where: PlayerWhereUniqueInput!
+
+  create: PlayerCreateWithoutScoringSessionsInput!
+}
+
+input ScoringSessionCreateOrConnectWithoutEventInput {
+  where: ScoringSessionWhereUniqueInput!
+
+  create: ScoringSessionCreateWithoutEventInput!
+}
+
+input ScoringSessionCreateManyEventInputEnvelope {
+  data: [ScoringSessionCreateManyEventInput!]!
+
+  skipDuplicates: Boolean
+}
+
+input ScoringSessionCreateManyEventInput {
+  id: Int
+
+  currentHole: Int
+}
+
+input EventCreateOrConnectWithoutScoresInput {
+  where: EventWhereUniqueInput!
+
+  create: EventCreateWithoutScoresInput!
+}
+
+input ScoreCreateOrConnectWithoutPlayerInput {
+  where: ScoreWhereUniqueInput!
+
+  create: ScoreCreateWithoutPlayerInput!
+}
+
+input ScoreCreateManyPlayerInputEnvelope {
+  data: [ScoreCreateManyPlayerInput!]!
+
+  skipDuplicates: Boolean
+}
+
+input ScoreCreateManyPlayerInput {
+  id: Int
+
+  resultValue: Float!
+
+  eventPoints: Float!
+
+  eventId: Int!
+
+  beers: Float
+
+  kr: Int
+}
+
+input PlayerCreateOrConnectWithoutTeamsInput {
+  where: PlayerWhereUniqueInput!
+
+  create: PlayerCreateWithoutTeamsInput!
+}
+
+input TeamCreateOrConnectWithoutScoringSessionsInput {
+  where: TeamWhereUniqueInput!
+
+  create: TeamCreateWithoutScoringSessionsInput!
+}
+
+input ScoringSessionCreateOrConnectWithoutPlayersInput {
+  where: ScoringSessionWhereUniqueInput!
+
+  create: ScoringSessionCreateWithoutPlayersInput!
+}
+
+input PlayerCreateOrConnectWithoutScoreInput {
+  where: PlayerWhereUniqueInput!
+
+  create: PlayerCreateWithoutScoreInput!
+}
+
+input ScoreCreateOrConnectWithoutEventInput {
+  where: ScoreWhereUniqueInput!
+
+  create: ScoreCreateWithoutEventInput!
+}
+
+input ScoreCreateManyEventInputEnvelope {
+  data: [ScoreCreateManyEventInput!]!
+
+  skipDuplicates: Boolean
+}
+
+input ScoreCreateManyEventInput {
+  id: Int
+
+  resultValue: Float!
+
+  eventPoints: Float!
+
+  playerId: Int!
+
+  beers: Float
+
+  kr: Int
+}
+
+input EventCreateOrConnectWithoutScoringSessionInput {
+  where: EventWhereUniqueInput!
+
+  create: EventCreateWithoutScoringSessionInput!
+}
+
+input ScoringSessionCreateOrConnectWithoutTeamsInput {
+  where: ScoringSessionWhereUniqueInput!
+
+  create: ScoringSessionCreateWithoutTeamsInput!
+}
+
+input TeamCreateOrConnectWithoutPlayersInput {
+  where: TeamWhereUniqueInput!
+
+  create: TeamCreateWithoutPlayersInput!
+}
+
+input PlayerCreateOrConnectWithoutFinalInfoInput {
+  where: PlayerWhereUniqueInput!
+
+  create: PlayerCreateWithoutFinalInfoInput!
+}
+
+input FinalInfoCreateOrConnectWithoutSeasonInput {
+  where: FinalInfoWhereUniqueInput!
+
+  create: FinalInfoCreateWithoutSeasonInput!
+}
+
+input SeasonCreateOrConnectWithoutEventsInput {
+  where: SeasonWhereUniqueInput!
+
+  create: SeasonCreateWithoutEventsInput!
+}
+
+input EventCreateOrConnectWithoutCourseInput {
+  where: EventWhereUniqueInput!
+
+  create: EventCreateWithoutCourseInput!
+}
+
+input EventCreateManyCourseInputEnvelope {
+  data: [EventCreateManyCourseInput!]!
+
+  skipDuplicates: Boolean
+}
+
+input EventCreateManyCourseInput {
+  id: Int
+
+  special: Boolean
+
+  scoring: EventScoring
+
+  status: EventStatus
+
+  type: EventType
+
+  seasonId: Int!
+}
+
+type AffectedRowsOutput {
+  count: Int!
+}
+
+input CourseCreateManyInput {
+  id: Int
+
+  club: String!
+
+  name: String!
+
+  par: Int
+}
+
+input CourseUpdateInput {
+  club: StringFieldUpdateOperationsInput
+
+  name: StringFieldUpdateOperationsInput
+
+  par: IntFieldUpdateOperationsInput
+
+  events: EventUpdateManyWithoutCourseInput
+
+  holes: HoleUpdateManyWithoutCourseInput
+}
+
+input StringFieldUpdateOperationsInput {
+  set: String
+}
+
+input IntFieldUpdateOperationsInput {
+  set: Int
+
+  increment: Int
+
+  decrement: Int
+
+  multiply: Int
+
+  divide: Int
+}
+
+input EventUpdateManyWithoutCourseInput {
+  create: [EventCreateWithoutCourseInput!]
+
+  connectOrCreate: [EventCreateOrConnectWithoutCourseInput!]
+
+  upsert: [EventUpsertWithWhereUniqueWithoutCourseInput!]
+
+  createMany: EventCreateManyCourseInputEnvelope
+
+  connect: [EventWhereUniqueInput!]
+
+  set: [EventWhereUniqueInput!]
+
+  disconnect: [EventWhereUniqueInput!]
+
+  delete: [EventWhereUniqueInput!]
+
+  update: [EventUpdateWithWhereUniqueWithoutCourseInput!]
+
+  updateMany: [EventUpdateManyWithWhereWithoutCourseInput!]
+
+  deleteMany: [EventScalarWhereInput!]
+}
+
+input EventUpsertWithWhereUniqueWithoutCourseInput {
+  where: EventWhereUniqueInput!
+
+  update: EventUpdateWithoutCourseInput!
+
+  create: EventCreateWithoutCourseInput!
+}
+
+input EventUpdateWithoutCourseInput {
+  special: BoolFieldUpdateOperationsInput
+
+  scoring: EnumEventScoringFieldUpdateOperationsInput
+
+  status: EnumEventStatusFieldUpdateOperationsInput
+
+  type: EnumEventTypeFieldUpdateOperationsInput
+
+  season: SeasonUpdateOneRequiredWithoutEventsInput
+
+  scores: ScoreUpdateManyWithoutEventInput
+
+  ScoringSession: ScoringSessionUpdateManyWithoutEventInput
+}
+
+input BoolFieldUpdateOperationsInput {
+  set: Boolean
+}
+
+input EnumEventScoringFieldUpdateOperationsInput {
+  set: EventScoring
+}
+
+input EnumEventStatusFieldUpdateOperationsInput {
+  set: EventStatus
+}
+
+input EnumEventTypeFieldUpdateOperationsInput {
+  set: EventType
+}
+
+input SeasonUpdateOneRequiredWithoutEventsInput {
+  create: SeasonCreateWithoutEventsInput
+
+  connectOrCreate: SeasonCreateOrConnectWithoutEventsInput
+
+  upsert: SeasonUpsertWithoutEventsInput
+
+  connect: SeasonWhereUniqueInput
+
+  update: SeasonUpdateWithoutEventsInput
+}
+
+input SeasonUpsertWithoutEventsInput {
+  update: SeasonUpdateWithoutEventsInput!
+
+  create: SeasonCreateWithoutEventsInput!
+}
+
+input SeasonUpdateWithoutEventsInput {
+  name: StringFieldUpdateOperationsInput
+
+  status: EnumSeasonStatusFieldUpdateOperationsInput
+
+  finalInfo: FinalInfoUpdateOneWithoutSeasonInput
+}
+
+input EnumSeasonStatusFieldUpdateOperationsInput {
+  set: SeasonStatus
+}
+
+input FinalInfoUpdateOneWithoutSeasonInput {
+  create: FinalInfoCreateWithoutSeasonInput
+
+  connectOrCreate: FinalInfoCreateOrConnectWithoutSeasonInput
+
+  upsert: FinalInfoUpsertWithoutSeasonInput
+
+  connect: FinalInfoWhereUniqueInput
+
+  disconnect: Boolean
+
+  delete: Boolean
+
+  update: FinalInfoUpdateWithoutSeasonInput
+}
+
+input FinalInfoUpsertWithoutSeasonInput {
+  update: FinalInfoUpdateWithoutSeasonInput!
+
+  create: FinalInfoCreateWithoutSeasonInput!
+}
+
+input FinalInfoUpdateWithoutSeasonInput {
+  photo: StringFieldUpdateOperationsInput
+
+  story: StringFieldUpdateOperationsInput
+
+  winner: PlayerUpdateOneRequiredWithoutFinalInfoInput
+}
+
+input PlayerUpdateOneRequiredWithoutFinalInfoInput {
+  create: PlayerCreateWithoutFinalInfoInput
+
+  connectOrCreate: PlayerCreateOrConnectWithoutFinalInfoInput
+
+  upsert: PlayerUpsertWithoutFinalInfoInput
+
+  connect: PlayerWhereUniqueInput
+
+  update: PlayerUpdateWithoutFinalInfoInput
+}
+
+input PlayerUpsertWithoutFinalInfoInput {
+  update: PlayerUpdateWithoutFinalInfoInput!
+
+  create: PlayerCreateWithoutFinalInfoInput!
+}
+
+input PlayerUpdateWithoutFinalInfoInput {
+  firstName: StringFieldUpdateOperationsInput
+
+  lastName: StringFieldUpdateOperationsInput
+
+  photo: NullableStringFieldUpdateOperationsInput
+
+  teams: TeamUpdateManyWithoutPlayersInput
+
+  scoringSessions: ScoringSessionUpdateManyWithoutPlayersInput
+
+  Score: ScoreUpdateManyWithoutPlayerInput
+}
+
+input NullableStringFieldUpdateOperationsInput {
+  set: String
+}
+
+input TeamUpdateManyWithoutPlayersInput {
+  create: [TeamCreateWithoutPlayersInput!]
+
+  connectOrCreate: [TeamCreateOrConnectWithoutPlayersInput!]
+
+  upsert: [TeamUpsertWithWhereUniqueWithoutPlayersInput!]
+
+  connect: [TeamWhereUniqueInput!]
+
+  set: [TeamWhereUniqueInput!]
+
+  disconnect: [TeamWhereUniqueInput!]
+
+  delete: [TeamWhereUniqueInput!]
+
+  update: [TeamUpdateWithWhereUniqueWithoutPlayersInput!]
+
+  updateMany: [TeamUpdateManyWithWhereWithoutPlayersInput!]
+
+  deleteMany: [TeamScalarWhereInput!]
+}
+
+input TeamUpsertWithWhereUniqueWithoutPlayersInput {
+  where: TeamWhereUniqueInput!
+
+  update: TeamUpdateWithoutPlayersInput!
+
+  create: TeamCreateWithoutPlayersInput!
+}
+
+input TeamUpdateWithoutPlayersInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+
+  scoringSessions: ScoringSessionUpdateManyWithoutTeamsInput
+}
+
+input DateTimeFieldUpdateOperationsInput {
+  set: DateTime
+}
+
+input ScoringSessionUpdateManyWithoutTeamsInput {
+  create: [ScoringSessionCreateWithoutTeamsInput!]
+
+  connectOrCreate: [ScoringSessionCreateOrConnectWithoutTeamsInput!]
+
+  upsert: [ScoringSessionUpsertWithWhereUniqueWithoutTeamsInput!]
+
+  connect: [ScoringSessionWhereUniqueInput!]
+
+  set: [ScoringSessionWhereUniqueInput!]
+
+  disconnect: [ScoringSessionWhereUniqueInput!]
+
+  delete: [ScoringSessionWhereUniqueInput!]
+
+  update: [ScoringSessionUpdateWithWhereUniqueWithoutTeamsInput!]
+
+  updateMany: [ScoringSessionUpdateManyWithWhereWithoutTeamsInput!]
+
+  deleteMany: [ScoringSessionScalarWhereInput!]
+}
+
+input ScoringSessionUpsertWithWhereUniqueWithoutTeamsInput {
+  where: ScoringSessionWhereUniqueInput!
+
+  update: ScoringSessionUpdateWithoutTeamsInput!
+
+  create: ScoringSessionCreateWithoutTeamsInput!
+}
+
+input ScoringSessionUpdateWithoutTeamsInput {
+  currentHole: IntFieldUpdateOperationsInput
+
+  event: EventUpdateOneRequiredWithoutScoringSessionInput
+
+  players: PlayerUpdateManyWithoutScoringSessionsInput
+}
+
+input EventUpdateOneRequiredWithoutScoringSessionInput {
+  create: EventCreateWithoutScoringSessionInput
+
+  connectOrCreate: EventCreateOrConnectWithoutScoringSessionInput
+
+  upsert: EventUpsertWithoutScoringSessionInput
+
+  connect: EventWhereUniqueInput
+
+  update: EventUpdateWithoutScoringSessionInput
+}
+
+input EventUpsertWithoutScoringSessionInput {
+  update: EventUpdateWithoutScoringSessionInput!
+
+  create: EventCreateWithoutScoringSessionInput!
+}
+
+input EventUpdateWithoutScoringSessionInput {
+  special: BoolFieldUpdateOperationsInput
+
+  scoring: EnumEventScoringFieldUpdateOperationsInput
+
+  status: EnumEventStatusFieldUpdateOperationsInput
+
+  type: EnumEventTypeFieldUpdateOperationsInput
+
+  course: CourseUpdateOneRequiredWithoutEventsInput
+
+  season: SeasonUpdateOneRequiredWithoutEventsInput
+
+  scores: ScoreUpdateManyWithoutEventInput
+}
+
+input CourseUpdateOneRequiredWithoutEventsInput {
+  create: CourseCreateWithoutEventsInput
+
+  connectOrCreate: CourseCreateOrConnectWithoutEventsInput
+
+  upsert: CourseUpsertWithoutEventsInput
+
+  connect: CourseWhereUniqueInput
+
+  update: CourseUpdateWithoutEventsInput
+}
+
+input CourseUpsertWithoutEventsInput {
+  update: CourseUpdateWithoutEventsInput!
+
+  create: CourseCreateWithoutEventsInput!
+}
+
+input CourseUpdateWithoutEventsInput {
+  club: StringFieldUpdateOperationsInput
+
+  name: StringFieldUpdateOperationsInput
+
+  par: IntFieldUpdateOperationsInput
+
+  holes: HoleUpdateManyWithoutCourseInput
+}
+
+input HoleUpdateManyWithoutCourseInput {
+  create: [HoleCreateWithoutCourseInput!]
+
+  connectOrCreate: [HoleCreateOrConnectWithoutCourseInput!]
+
+  upsert: [HoleUpsertWithWhereUniqueWithoutCourseInput!]
+
+  createMany: HoleCreateManyCourseInputEnvelope
+
+  connect: [HoleWhereUniqueInput!]
+
+  set: [HoleWhereUniqueInput!]
+
+  disconnect: [HoleWhereUniqueInput!]
+
+  delete: [HoleWhereUniqueInput!]
+
+  update: [HoleUpdateWithWhereUniqueWithoutCourseInput!]
+
+  updateMany: [HoleUpdateManyWithWhereWithoutCourseInput!]
+
+  deleteMany: [HoleScalarWhereInput!]
+}
+
+input HoleUpsertWithWhereUniqueWithoutCourseInput {
+  where: HoleWhereUniqueInput!
+
+  update: HoleUpdateWithoutCourseInput!
+
+  create: HoleCreateWithoutCourseInput!
+}
+
+input HoleUpdateWithoutCourseInput {
+  index: IntFieldUpdateOperationsInput
+
+  number: IntFieldUpdateOperationsInput
+
+  par: IntFieldUpdateOperationsInput
+}
+
+input HoleUpdateWithWhereUniqueWithoutCourseInput {
+  where: HoleWhereUniqueInput!
+
+  data: HoleUpdateWithoutCourseInput!
+}
+
+input HoleUpdateManyWithWhereWithoutCourseInput {
+  where: HoleScalarWhereInput!
+
+  data: HoleUpdateManyMutationInput!
+}
+
+input HoleScalarWhereInput {
+  AND: [HoleScalarWhereInput!]
+
+  OR: [HoleScalarWhereInput!]
+
+  NOT: [HoleScalarWhereInput!]
+
+  id: IntFilter
+
+  index: IntFilter
+
+  number: IntFilter
+
+  par: IntFilter
+
+  courseId: IntFilter
+}
+
+input HoleUpdateManyMutationInput {
+  index: IntFieldUpdateOperationsInput
+
+  number: IntFieldUpdateOperationsInput
+
+  par: IntFieldUpdateOperationsInput
+}
+
+input ScoreUpdateManyWithoutEventInput {
+  create: [ScoreCreateWithoutEventInput!]
+
+  connectOrCreate: [ScoreCreateOrConnectWithoutEventInput!]
+
+  upsert: [ScoreUpsertWithWhereUniqueWithoutEventInput!]
+
+  createMany: ScoreCreateManyEventInputEnvelope
+
+  connect: [ScoreWhereUniqueInput!]
+
+  set: [ScoreWhereUniqueInput!]
+
+  disconnect: [ScoreWhereUniqueInput!]
+
+  delete: [ScoreWhereUniqueInput!]
+
+  update: [ScoreUpdateWithWhereUniqueWithoutEventInput!]
+
+  updateMany: [ScoreUpdateManyWithWhereWithoutEventInput!]
+
+  deleteMany: [ScoreScalarWhereInput!]
+}
+
+input ScoreUpsertWithWhereUniqueWithoutEventInput {
+  where: ScoreWhereUniqueInput!
+
+  update: ScoreUpdateWithoutEventInput!
+
+  create: ScoreCreateWithoutEventInput!
+}
+
+input ScoreUpdateWithoutEventInput {
+  resultValue: FloatFieldUpdateOperationsInput
+
+  eventPoints: FloatFieldUpdateOperationsInput
+
+  beers: FloatFieldUpdateOperationsInput
+
+  kr: IntFieldUpdateOperationsInput
+
+  player: PlayerUpdateOneRequiredWithoutScoreInput
+}
+
+input FloatFieldUpdateOperationsInput {
+  set: Float
+
+  increment: Float
+
+  decrement: Float
+
+  multiply: Float
+
+  divide: Float
+}
+
+input PlayerUpdateOneRequiredWithoutScoreInput {
+  create: PlayerCreateWithoutScoreInput
+
+  connectOrCreate: PlayerCreateOrConnectWithoutScoreInput
+
+  upsert: PlayerUpsertWithoutScoreInput
+
+  connect: PlayerWhereUniqueInput
+
+  update: PlayerUpdateWithoutScoreInput
+}
+
+input PlayerUpsertWithoutScoreInput {
+  update: PlayerUpdateWithoutScoreInput!
+
+  create: PlayerCreateWithoutScoreInput!
+}
+
+input PlayerUpdateWithoutScoreInput {
+  firstName: StringFieldUpdateOperationsInput
+
+  lastName: StringFieldUpdateOperationsInput
+
+  photo: NullableStringFieldUpdateOperationsInput
+
+  teams: TeamUpdateManyWithoutPlayersInput
+
+  scoringSessions: ScoringSessionUpdateManyWithoutPlayersInput
+
+  FinalInfo: FinalInfoUpdateManyWithoutWinnerInput
+}
+
+input ScoringSessionUpdateManyWithoutPlayersInput {
+  create: [ScoringSessionCreateWithoutPlayersInput!]
+
+  connectOrCreate: [ScoringSessionCreateOrConnectWithoutPlayersInput!]
+
+  upsert: [ScoringSessionUpsertWithWhereUniqueWithoutPlayersInput!]
+
+  connect: [ScoringSessionWhereUniqueInput!]
+
+  set: [ScoringSessionWhereUniqueInput!]
+
+  disconnect: [ScoringSessionWhereUniqueInput!]
+
+  delete: [ScoringSessionWhereUniqueInput!]
+
+  update: [ScoringSessionUpdateWithWhereUniqueWithoutPlayersInput!]
+
+  updateMany: [ScoringSessionUpdateManyWithWhereWithoutPlayersInput!]
+
+  deleteMany: [ScoringSessionScalarWhereInput!]
+}
+
+input ScoringSessionUpsertWithWhereUniqueWithoutPlayersInput {
+  where: ScoringSessionWhereUniqueInput!
+
+  update: ScoringSessionUpdateWithoutPlayersInput!
+
+  create: ScoringSessionCreateWithoutPlayersInput!
+}
+
+input ScoringSessionUpdateWithoutPlayersInput {
+  currentHole: IntFieldUpdateOperationsInput
+
+  event: EventUpdateOneRequiredWithoutScoringSessionInput
+
+  teams: TeamUpdateManyWithoutScoringSessionsInput
+}
+
+input TeamUpdateManyWithoutScoringSessionsInput {
+  create: [TeamCreateWithoutScoringSessionsInput!]
+
+  connectOrCreate: [TeamCreateOrConnectWithoutScoringSessionsInput!]
+
+  upsert: [TeamUpsertWithWhereUniqueWithoutScoringSessionsInput!]
+
+  connect: [TeamWhereUniqueInput!]
+
+  set: [TeamWhereUniqueInput!]
+
+  disconnect: [TeamWhereUniqueInput!]
+
+  delete: [TeamWhereUniqueInput!]
+
+  update: [TeamUpdateWithWhereUniqueWithoutScoringSessionsInput!]
+
+  updateMany: [TeamUpdateManyWithWhereWithoutScoringSessionsInput!]
+
+  deleteMany: [TeamScalarWhereInput!]
+}
+
+input TeamUpsertWithWhereUniqueWithoutScoringSessionsInput {
+  where: TeamWhereUniqueInput!
+
+  update: TeamUpdateWithoutScoringSessionsInput!
+
+  create: TeamCreateWithoutScoringSessionsInput!
+}
+
+input TeamUpdateWithoutScoringSessionsInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+
+  players: PlayerUpdateManyWithoutTeamsInput
+}
+
+input PlayerUpdateManyWithoutTeamsInput {
+  create: [PlayerCreateWithoutTeamsInput!]
+
+  connectOrCreate: [PlayerCreateOrConnectWithoutTeamsInput!]
+
+  upsert: [PlayerUpsertWithWhereUniqueWithoutTeamsInput!]
+
+  connect: [PlayerWhereUniqueInput!]
+
+  set: [PlayerWhereUniqueInput!]
+
+  disconnect: [PlayerWhereUniqueInput!]
+
+  delete: [PlayerWhereUniqueInput!]
+
+  update: [PlayerUpdateWithWhereUniqueWithoutTeamsInput!]
+
+  updateMany: [PlayerUpdateManyWithWhereWithoutTeamsInput!]
+
+  deleteMany: [PlayerScalarWhereInput!]
+}
+
+input PlayerUpsertWithWhereUniqueWithoutTeamsInput {
+  where: PlayerWhereUniqueInput!
+
+  update: PlayerUpdateWithoutTeamsInput!
+
+  create: PlayerCreateWithoutTeamsInput!
+}
+
+input PlayerUpdateWithoutTeamsInput {
+  firstName: StringFieldUpdateOperationsInput
+
+  lastName: StringFieldUpdateOperationsInput
+
+  photo: NullableStringFieldUpdateOperationsInput
+
+  scoringSessions: ScoringSessionUpdateManyWithoutPlayersInput
+
+  Score: ScoreUpdateManyWithoutPlayerInput
+
+  FinalInfo: FinalInfoUpdateManyWithoutWinnerInput
+}
+
+input ScoreUpdateManyWithoutPlayerInput {
+  create: [ScoreCreateWithoutPlayerInput!]
+
+  connectOrCreate: [ScoreCreateOrConnectWithoutPlayerInput!]
+
+  upsert: [ScoreUpsertWithWhereUniqueWithoutPlayerInput!]
+
+  createMany: ScoreCreateManyPlayerInputEnvelope
+
+  connect: [ScoreWhereUniqueInput!]
+
+  set: [ScoreWhereUniqueInput!]
+
+  disconnect: [ScoreWhereUniqueInput!]
+
+  delete: [ScoreWhereUniqueInput!]
+
+  update: [ScoreUpdateWithWhereUniqueWithoutPlayerInput!]
+
+  updateMany: [ScoreUpdateManyWithWhereWithoutPlayerInput!]
+
+  deleteMany: [ScoreScalarWhereInput!]
+}
+
+input ScoreUpsertWithWhereUniqueWithoutPlayerInput {
+  where: ScoreWhereUniqueInput!
+
+  update: ScoreUpdateWithoutPlayerInput!
+
+  create: ScoreCreateWithoutPlayerInput!
+}
+
+input ScoreUpdateWithoutPlayerInput {
+  resultValue: FloatFieldUpdateOperationsInput
+
+  eventPoints: FloatFieldUpdateOperationsInput
+
+  beers: FloatFieldUpdateOperationsInput
+
+  kr: IntFieldUpdateOperationsInput
+
+  event: EventUpdateOneRequiredWithoutScoresInput
+}
+
+input EventUpdateOneRequiredWithoutScoresInput {
+  create: EventCreateWithoutScoresInput
+
+  connectOrCreate: EventCreateOrConnectWithoutScoresInput
+
+  upsert: EventUpsertWithoutScoresInput
+
+  connect: EventWhereUniqueInput
+
+  update: EventUpdateWithoutScoresInput
+}
+
+input EventUpsertWithoutScoresInput {
+  update: EventUpdateWithoutScoresInput!
+
+  create: EventCreateWithoutScoresInput!
+}
+
+input EventUpdateWithoutScoresInput {
+  special: BoolFieldUpdateOperationsInput
+
+  scoring: EnumEventScoringFieldUpdateOperationsInput
+
+  status: EnumEventStatusFieldUpdateOperationsInput
+
+  type: EnumEventTypeFieldUpdateOperationsInput
+
+  course: CourseUpdateOneRequiredWithoutEventsInput
+
+  season: SeasonUpdateOneRequiredWithoutEventsInput
+
+  ScoringSession: ScoringSessionUpdateManyWithoutEventInput
+}
+
+input ScoringSessionUpdateManyWithoutEventInput {
+  create: [ScoringSessionCreateWithoutEventInput!]
+
+  connectOrCreate: [ScoringSessionCreateOrConnectWithoutEventInput!]
+
+  upsert: [ScoringSessionUpsertWithWhereUniqueWithoutEventInput!]
+
+  createMany: ScoringSessionCreateManyEventInputEnvelope
+
+  connect: [ScoringSessionWhereUniqueInput!]
+
+  set: [ScoringSessionWhereUniqueInput!]
+
+  disconnect: [ScoringSessionWhereUniqueInput!]
+
+  delete: [ScoringSessionWhereUniqueInput!]
+
+  update: [ScoringSessionUpdateWithWhereUniqueWithoutEventInput!]
+
+  updateMany: [ScoringSessionUpdateManyWithWhereWithoutEventInput!]
+
+  deleteMany: [ScoringSessionScalarWhereInput!]
+}
+
+input ScoringSessionUpsertWithWhereUniqueWithoutEventInput {
+  where: ScoringSessionWhereUniqueInput!
+
+  update: ScoringSessionUpdateWithoutEventInput!
+
+  create: ScoringSessionCreateWithoutEventInput!
+}
+
+input ScoringSessionUpdateWithoutEventInput {
+  currentHole: IntFieldUpdateOperationsInput
+
+  players: PlayerUpdateManyWithoutScoringSessionsInput
+
+  teams: TeamUpdateManyWithoutScoringSessionsInput
+}
+
+input PlayerUpdateManyWithoutScoringSessionsInput {
+  create: [PlayerCreateWithoutScoringSessionsInput!]
+
+  connectOrCreate: [PlayerCreateOrConnectWithoutScoringSessionsInput!]
+
+  upsert: [PlayerUpsertWithWhereUniqueWithoutScoringSessionsInput!]
+
+  connect: [PlayerWhereUniqueInput!]
+
+  set: [PlayerWhereUniqueInput!]
+
+  disconnect: [PlayerWhereUniqueInput!]
+
+  delete: [PlayerWhereUniqueInput!]
+
+  update: [PlayerUpdateWithWhereUniqueWithoutScoringSessionsInput!]
+
+  updateMany: [PlayerUpdateManyWithWhereWithoutScoringSessionsInput!]
+
+  deleteMany: [PlayerScalarWhereInput!]
+}
+
+input PlayerUpsertWithWhereUniqueWithoutScoringSessionsInput {
+  where: PlayerWhereUniqueInput!
+
+  update: PlayerUpdateWithoutScoringSessionsInput!
+
+  create: PlayerCreateWithoutScoringSessionsInput!
+}
+
+input PlayerUpdateWithoutScoringSessionsInput {
+  firstName: StringFieldUpdateOperationsInput
+
+  lastName: StringFieldUpdateOperationsInput
+
+  photo: NullableStringFieldUpdateOperationsInput
+
+  teams: TeamUpdateManyWithoutPlayersInput
+
+  Score: ScoreUpdateManyWithoutPlayerInput
+
+  FinalInfo: FinalInfoUpdateManyWithoutWinnerInput
+}
+
+input FinalInfoUpdateManyWithoutWinnerInput {
+  create: [FinalInfoCreateWithoutWinnerInput!]
+
+  connectOrCreate: [FinalInfoCreateOrConnectWithoutWinnerInput!]
+
+  upsert: [FinalInfoUpsertWithWhereUniqueWithoutWinnerInput!]
+
+  createMany: FinalInfoCreateManyWinnerInputEnvelope
+
+  connect: [FinalInfoWhereUniqueInput!]
+
+  set: [FinalInfoWhereUniqueInput!]
+
+  disconnect: [FinalInfoWhereUniqueInput!]
+
+  delete: [FinalInfoWhereUniqueInput!]
+
+  update: [FinalInfoUpdateWithWhereUniqueWithoutWinnerInput!]
+
+  updateMany: [FinalInfoUpdateManyWithWhereWithoutWinnerInput!]
+
+  deleteMany: [FinalInfoScalarWhereInput!]
+}
+
+input FinalInfoUpsertWithWhereUniqueWithoutWinnerInput {
+  where: FinalInfoWhereUniqueInput!
+
+  update: FinalInfoUpdateWithoutWinnerInput!
+
+  create: FinalInfoCreateWithoutWinnerInput!
+}
+
+input FinalInfoUpdateWithoutWinnerInput {
+  photo: StringFieldUpdateOperationsInput
+
+  story: StringFieldUpdateOperationsInput
+
+  Season: SeasonUpdateManyWithoutFinalInfoInput
+}
+
+input SeasonUpdateManyWithoutFinalInfoInput {
+  create: [SeasonCreateWithoutFinalInfoInput!]
+
+  connectOrCreate: [SeasonCreateOrConnectWithoutFinalInfoInput!]
+
+  upsert: [SeasonUpsertWithWhereUniqueWithoutFinalInfoInput!]
+
+  createMany: SeasonCreateManyFinalInfoInputEnvelope
+
+  connect: [SeasonWhereUniqueInput!]
+
+  set: [SeasonWhereUniqueInput!]
+
+  disconnect: [SeasonWhereUniqueInput!]
+
+  delete: [SeasonWhereUniqueInput!]
+
+  update: [SeasonUpdateWithWhereUniqueWithoutFinalInfoInput!]
+
+  updateMany: [SeasonUpdateManyWithWhereWithoutFinalInfoInput!]
+
+  deleteMany: [SeasonScalarWhereInput!]
+}
+
+input SeasonUpsertWithWhereUniqueWithoutFinalInfoInput {
+  where: SeasonWhereUniqueInput!
+
+  update: SeasonUpdateWithoutFinalInfoInput!
+
+  create: SeasonCreateWithoutFinalInfoInput!
+}
+
+input SeasonUpdateWithoutFinalInfoInput {
+  name: StringFieldUpdateOperationsInput
+
+  status: EnumSeasonStatusFieldUpdateOperationsInput
+
+  events: EventUpdateManyWithoutSeasonInput
+}
+
+input EventUpdateManyWithoutSeasonInput {
+  create: [EventCreateWithoutSeasonInput!]
+
+  connectOrCreate: [EventCreateOrConnectWithoutSeasonInput!]
+
+  upsert: [EventUpsertWithWhereUniqueWithoutSeasonInput!]
+
+  createMany: EventCreateManySeasonInputEnvelope
+
+  connect: [EventWhereUniqueInput!]
+
+  set: [EventWhereUniqueInput!]
+
+  disconnect: [EventWhereUniqueInput!]
+
+  delete: [EventWhereUniqueInput!]
+
+  update: [EventUpdateWithWhereUniqueWithoutSeasonInput!]
+
+  updateMany: [EventUpdateManyWithWhereWithoutSeasonInput!]
+
+  deleteMany: [EventScalarWhereInput!]
+}
+
+input EventUpsertWithWhereUniqueWithoutSeasonInput {
+  where: EventWhereUniqueInput!
+
+  update: EventUpdateWithoutSeasonInput!
+
+  create: EventCreateWithoutSeasonInput!
+}
+
+input EventUpdateWithoutSeasonInput {
+  special: BoolFieldUpdateOperationsInput
+
+  scoring: EnumEventScoringFieldUpdateOperationsInput
+
+  status: EnumEventStatusFieldUpdateOperationsInput
+
+  type: EnumEventTypeFieldUpdateOperationsInput
+
+  course: CourseUpdateOneRequiredWithoutEventsInput
+
+  scores: ScoreUpdateManyWithoutEventInput
+
+  ScoringSession: ScoringSessionUpdateManyWithoutEventInput
+}
+
+input EventUpdateWithWhereUniqueWithoutSeasonInput {
+  where: EventWhereUniqueInput!
+
+  data: EventUpdateWithoutSeasonInput!
+}
+
+input EventUpdateManyWithWhereWithoutSeasonInput {
+  where: EventScalarWhereInput!
+
+  data: EventUpdateManyMutationInput!
+}
+
+input EventScalarWhereInput {
+  AND: [EventScalarWhereInput!]
+
+  OR: [EventScalarWhereInput!]
+
+  NOT: [EventScalarWhereInput!]
+
+  id: IntFilter
+
+  special: BoolFilter
+
+  scoring: EnumEventScoringFilter
+
+  status: EnumEventStatusFilter
+
+  type: EnumEventTypeFilter
+
+  courseId: IntFilter
+
+  seasonId: IntFilter
+}
+
+input EventUpdateManyMutationInput {
+  special: BoolFieldUpdateOperationsInput
+
+  scoring: EnumEventScoringFieldUpdateOperationsInput
+
+  status: EnumEventStatusFieldUpdateOperationsInput
+
+  type: EnumEventTypeFieldUpdateOperationsInput
+}
+
+input SeasonUpdateWithWhereUniqueWithoutFinalInfoInput {
+  where: SeasonWhereUniqueInput!
+
+  data: SeasonUpdateWithoutFinalInfoInput!
+}
+
+input SeasonUpdateManyWithWhereWithoutFinalInfoInput {
+  where: SeasonScalarWhereInput!
+
+  data: SeasonUpdateManyMutationInput!
+}
+
+input SeasonScalarWhereInput {
+  AND: [SeasonScalarWhereInput!]
+
+  OR: [SeasonScalarWhereInput!]
+
+  NOT: [SeasonScalarWhereInput!]
+
+  id: IntFilter
+
+  name: StringFilter
+
+  status: EnumSeasonStatusFilter
+
+  finalInfoId: IntNullableFilter
+}
+
+input SeasonUpdateManyMutationInput {
+  name: StringFieldUpdateOperationsInput
+
+  status: EnumSeasonStatusFieldUpdateOperationsInput
+}
+
+input FinalInfoUpdateWithWhereUniqueWithoutWinnerInput {
+  where: FinalInfoWhereUniqueInput!
+
+  data: FinalInfoUpdateWithoutWinnerInput!
+}
+
+input FinalInfoUpdateManyWithWhereWithoutWinnerInput {
+  where: FinalInfoScalarWhereInput!
+
+  data: FinalInfoUpdateManyMutationInput!
+}
+
+input FinalInfoScalarWhereInput {
+  AND: [FinalInfoScalarWhereInput!]
+
+  OR: [FinalInfoScalarWhereInput!]
+
+  NOT: [FinalInfoScalarWhereInput!]
+
+  id: IntFilter
+
+  photo: StringFilter
+
+  winnerId: IntFilter
+
+  story: StringFilter
+}
+
+input FinalInfoUpdateManyMutationInput {
+  photo: StringFieldUpdateOperationsInput
+
+  story: StringFieldUpdateOperationsInput
+}
+
+input PlayerUpdateWithWhereUniqueWithoutScoringSessionsInput {
+  where: PlayerWhereUniqueInput!
+
+  data: PlayerUpdateWithoutScoringSessionsInput!
+}
+
+input PlayerUpdateManyWithWhereWithoutScoringSessionsInput {
+  where: PlayerScalarWhereInput!
+
+  data: PlayerUpdateManyMutationInput!
+}
+
+input PlayerScalarWhereInput {
+  AND: [PlayerScalarWhereInput!]
+
+  OR: [PlayerScalarWhereInput!]
+
+  NOT: [PlayerScalarWhereInput!]
+
+  id: IntFilter
+
+  firstName: StringFilter
+
+  lastName: StringFilter
+
+  photo: StringNullableFilter
+}
+
+input PlayerUpdateManyMutationInput {
+  firstName: StringFieldUpdateOperationsInput
+
+  lastName: StringFieldUpdateOperationsInput
+
+  photo: NullableStringFieldUpdateOperationsInput
+}
+
+input ScoringSessionUpdateWithWhereUniqueWithoutEventInput {
+  where: ScoringSessionWhereUniqueInput!
+
+  data: ScoringSessionUpdateWithoutEventInput!
+}
+
+input ScoringSessionUpdateManyWithWhereWithoutEventInput {
+  where: ScoringSessionScalarWhereInput!
+
+  data: ScoringSessionUpdateManyMutationInput!
+}
+
+input ScoringSessionScalarWhereInput {
+  AND: [ScoringSessionScalarWhereInput!]
+
+  OR: [ScoringSessionScalarWhereInput!]
+
+  NOT: [ScoringSessionScalarWhereInput!]
+
+  id: IntFilter
+
+  eventId: IntFilter
+
+  currentHole: IntFilter
+}
+
+input ScoringSessionUpdateManyMutationInput {
+  currentHole: IntFieldUpdateOperationsInput
+}
+
+input ScoreUpdateWithWhereUniqueWithoutPlayerInput {
+  where: ScoreWhereUniqueInput!
+
+  data: ScoreUpdateWithoutPlayerInput!
+}
+
+input ScoreUpdateManyWithWhereWithoutPlayerInput {
+  where: ScoreScalarWhereInput!
+
+  data: ScoreUpdateManyMutationInput!
+}
+
+input ScoreScalarWhereInput {
+  AND: [ScoreScalarWhereInput!]
+
+  OR: [ScoreScalarWhereInput!]
+
+  NOT: [ScoreScalarWhereInput!]
+
+  id: IntFilter
+
+  resultValue: FloatFilter
+
+  eventPoints: FloatFilter
+
+  eventId: IntFilter
+
+  playerId: IntFilter
+
+  beers: FloatFilter
+
+  kr: IntFilter
+}
+
+input ScoreUpdateManyMutationInput {
+  resultValue: FloatFieldUpdateOperationsInput
+
+  eventPoints: FloatFieldUpdateOperationsInput
+
+  beers: FloatFieldUpdateOperationsInput
+
+  kr: IntFieldUpdateOperationsInput
+}
+
+input PlayerUpdateWithWhereUniqueWithoutTeamsInput {
+  where: PlayerWhereUniqueInput!
+
+  data: PlayerUpdateWithoutTeamsInput!
+}
+
+input PlayerUpdateManyWithWhereWithoutTeamsInput {
+  where: PlayerScalarWhereInput!
+
+  data: PlayerUpdateManyMutationInput!
+}
+
+input TeamUpdateWithWhereUniqueWithoutScoringSessionsInput {
+  where: TeamWhereUniqueInput!
+
+  data: TeamUpdateWithoutScoringSessionsInput!
+}
+
+input TeamUpdateManyWithWhereWithoutScoringSessionsInput {
+  where: TeamScalarWhereInput!
+
+  data: TeamUpdateManyMutationInput!
+}
+
+input TeamScalarWhereInput {
+  AND: [TeamScalarWhereInput!]
+
+  OR: [TeamScalarWhereInput!]
+
+  NOT: [TeamScalarWhereInput!]
+
+  id: IntFilter
+
+  createdAt: DateTimeFilter
+}
+
+input TeamUpdateManyMutationInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+}
+
+input ScoringSessionUpdateWithWhereUniqueWithoutPlayersInput {
+  where: ScoringSessionWhereUniqueInput!
+
+  data: ScoringSessionUpdateWithoutPlayersInput!
+}
+
+input ScoringSessionUpdateManyWithWhereWithoutPlayersInput {
+  where: ScoringSessionScalarWhereInput!
+
+  data: ScoringSessionUpdateManyMutationInput!
+}
+
+input ScoreUpdateWithWhereUniqueWithoutEventInput {
+  where: ScoreWhereUniqueInput!
+
+  data: ScoreUpdateWithoutEventInput!
+}
+
+input ScoreUpdateManyWithWhereWithoutEventInput {
+  where: ScoreScalarWhereInput!
+
+  data: ScoreUpdateManyMutationInput!
+}
+
+input ScoringSessionUpdateWithWhereUniqueWithoutTeamsInput {
+  where: ScoringSessionWhereUniqueInput!
+
+  data: ScoringSessionUpdateWithoutTeamsInput!
+}
+
+input ScoringSessionUpdateManyWithWhereWithoutTeamsInput {
+  where: ScoringSessionScalarWhereInput!
+
+  data: ScoringSessionUpdateManyMutationInput!
+}
+
+input TeamUpdateWithWhereUniqueWithoutPlayersInput {
+  where: TeamWhereUniqueInput!
+
+  data: TeamUpdateWithoutPlayersInput!
+}
+
+input TeamUpdateManyWithWhereWithoutPlayersInput {
+  where: TeamScalarWhereInput!
+
+  data: TeamUpdateManyMutationInput!
+}
+
+input EventUpdateWithWhereUniqueWithoutCourseInput {
+  where: EventWhereUniqueInput!
+
+  data: EventUpdateWithoutCourseInput!
+}
+
+input EventUpdateManyWithWhereWithoutCourseInput {
+  where: EventScalarWhereInput!
+
+  data: EventUpdateManyMutationInput!
+}
+
+input CourseUpdateManyMutationInput {
+  club: StringFieldUpdateOperationsInput
+
+  name: StringFieldUpdateOperationsInput
+
+  par: IntFieldUpdateOperationsInput
+}
+
+input EventCreateInput {
+  special: Boolean
+
+  scoring: EventScoring
+
+  status: EventStatus
+
+  type: EventType
+
+  course: CourseCreateNestedOneWithoutEventsInput!
+
+  season: SeasonCreateNestedOneWithoutEventsInput!
+
+  scores: ScoreCreateNestedManyWithoutEventInput
+
+  ScoringSession: ScoringSessionCreateNestedManyWithoutEventInput
+}
+
+input EventCreateManyInput {
+  id: Int
+
+  special: Boolean
+
+  scoring: EventScoring
+
+  status: EventStatus
+
+  type: EventType
+
+  courseId: Int!
+
+  seasonId: Int!
+}
+
+input EventUpdateInput {
+  special: BoolFieldUpdateOperationsInput
+
+  scoring: EnumEventScoringFieldUpdateOperationsInput
+
+  status: EnumEventStatusFieldUpdateOperationsInput
+
+  type: EnumEventTypeFieldUpdateOperationsInput
+
+  course: CourseUpdateOneRequiredWithoutEventsInput
+
+  season: SeasonUpdateOneRequiredWithoutEventsInput
+
+  scores: ScoreUpdateManyWithoutEventInput
+
+  ScoringSession: ScoringSessionUpdateManyWithoutEventInput
+}
+
+input FinalInfoCreateInput {
+  photo: String!
+
+  story: String!
+
+  winner: PlayerCreateNestedOneWithoutFinalInfoInput!
+
+  Season: SeasonCreateNestedManyWithoutFinalInfoInput
+}
+
+input FinalInfoCreateManyInput {
+  id: Int
+
+  photo: String!
+
+  winnerId: Int!
+
+  story: String!
+}
+
+input FinalInfoUpdateInput {
+  photo: StringFieldUpdateOperationsInput
+
+  story: StringFieldUpdateOperationsInput
+
+  winner: PlayerUpdateOneRequiredWithoutFinalInfoInput
+
+  Season: SeasonUpdateManyWithoutFinalInfoInput
+}
+
+input HoleCreateInput {
+  index: Int!
+
+  number: Int!
+
+  par: Int!
+
+  course: CourseCreateNestedOneWithoutHolesInput!
+}
+
+input CourseCreateNestedOneWithoutHolesInput {
+  create: CourseCreateWithoutHolesInput
+
+  connectOrCreate: CourseCreateOrConnectWithoutHolesInput
+
+  connect: CourseWhereUniqueInput
+}
+
+input CourseCreateWithoutHolesInput {
+  club: String!
+
+  name: String!
+
+  par: Int
+
+  events: EventCreateNestedManyWithoutCourseInput
+}
+
+input CourseCreateOrConnectWithoutHolesInput {
+  where: CourseWhereUniqueInput!
+
+  create: CourseCreateWithoutHolesInput!
+}
+
+input HoleCreateManyInput {
+  id: Int
+
+  index: Int!
+
+  number: Int!
+
+  par: Int!
+
+  courseId: Int!
+}
+
+input HoleUpdateInput {
+  index: IntFieldUpdateOperationsInput
+
+  number: IntFieldUpdateOperationsInput
+
+  par: IntFieldUpdateOperationsInput
+
+  course: CourseUpdateOneRequiredWithoutHolesInput
+}
+
+input CourseUpdateOneRequiredWithoutHolesInput {
+  create: CourseCreateWithoutHolesInput
+
+  connectOrCreate: CourseCreateOrConnectWithoutHolesInput
+
+  upsert: CourseUpsertWithoutHolesInput
+
+  connect: CourseWhereUniqueInput
+
+  update: CourseUpdateWithoutHolesInput
+}
+
+input CourseUpsertWithoutHolesInput {
+  update: CourseUpdateWithoutHolesInput!
+
+  create: CourseCreateWithoutHolesInput!
+}
+
+input CourseUpdateWithoutHolesInput {
+  club: StringFieldUpdateOperationsInput
+
+  name: StringFieldUpdateOperationsInput
+
+  par: IntFieldUpdateOperationsInput
+
+  events: EventUpdateManyWithoutCourseInput
+}
+
 input PlayerCreateInput {
   firstName: String!
 
   lastName: String!
+
+  photo: String
+
+  teams: TeamCreateNestedManyWithoutPlayersInput
+
+  scoringSessions: ScoringSessionCreateNestedManyWithoutPlayersInput
+
+  Score: ScoreCreateNestedManyWithoutPlayerInput
+
+  FinalInfo: FinalInfoCreateNestedManyWithoutWinnerInput
+}
+
+input PlayerCreateManyInput {
+  id: Int
+
+  firstName: String!
+
+  lastName: String!
+
+  photo: String
+}
+
+input PlayerUpdateInput {
+  firstName: StringFieldUpdateOperationsInput
+
+  lastName: StringFieldUpdateOperationsInput
+
+  photo: NullableStringFieldUpdateOperationsInput
+
+  teams: TeamUpdateManyWithoutPlayersInput
+
+  scoringSessions: ScoringSessionUpdateManyWithoutPlayersInput
+
+  Score: ScoreUpdateManyWithoutPlayerInput
+
+  FinalInfo: FinalInfoUpdateManyWithoutWinnerInput
+}
+
+input ScoreCreateInput {
+  resultValue: Float!
+
+  eventPoints: Float!
+
+  beers: Float
+
+  kr: Int
+
+  event: EventCreateNestedOneWithoutScoresInput!
+
+  player: PlayerCreateNestedOneWithoutScoreInput!
+}
+
+input ScoreCreateManyInput {
+  id: Int
+
+  resultValue: Float!
+
+  eventPoints: Float!
+
+  eventId: Int!
+
+  playerId: Int!
+
+  beers: Float
+
+  kr: Int
+}
+
+input ScoreUpdateInput {
+  resultValue: FloatFieldUpdateOperationsInput
+
+  eventPoints: FloatFieldUpdateOperationsInput
+
+  beers: FloatFieldUpdateOperationsInput
+
+  kr: IntFieldUpdateOperationsInput
+
+  event: EventUpdateOneRequiredWithoutScoresInput
+
+  player: PlayerUpdateOneRequiredWithoutScoreInput
+}
+
+input ScoringSessionCreateInput {
+  currentHole: Int
+
+  event: EventCreateNestedOneWithoutScoringSessionInput!
+
+  players: PlayerCreateNestedManyWithoutScoringSessionsInput
+
+  teams: TeamCreateNestedManyWithoutScoringSessionsInput
+}
+
+input ScoringSessionCreateManyInput {
+  id: Int
+
+  eventId: Int!
+
+  currentHole: Int
+}
+
+input ScoringSessionUpdateInput {
+  currentHole: IntFieldUpdateOperationsInput
+
+  event: EventUpdateOneRequiredWithoutScoringSessionInput
+
+  players: PlayerUpdateManyWithoutScoringSessionsInput
+
+  teams: TeamUpdateManyWithoutScoringSessionsInput
+}
+
+input SeasonCreateInput {
+  name: String!
+
+  status: SeasonStatus!
+
+  events: EventCreateNestedManyWithoutSeasonInput
+
+  finalInfo: FinalInfoCreateNestedOneWithoutSeasonInput
+}
+
+input SeasonCreateManyInput {
+  id: Int
+
+  name: String!
+
+  status: SeasonStatus!
+
+  finalInfoId: Int
+}
+
+input SeasonUpdateInput {
+  name: StringFieldUpdateOperationsInput
+
+  status: EnumSeasonStatusFieldUpdateOperationsInput
+
+  events: EventUpdateManyWithoutSeasonInput
+
+  finalInfo: FinalInfoUpdateOneWithoutSeasonInput
+}
+
+input TeamCreateInput {
+  createdAt: DateTime
+
+  players: PlayerCreateNestedManyWithoutTeamsInput
+
+  scoringSessions: ScoringSessionCreateNestedManyWithoutTeamsInput
+}
+
+input TeamCreateManyInput {
+  id: Int
+
+  createdAt: DateTime
+}
+
+input TeamUpdateInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+
+  players: PlayerUpdateManyWithoutTeamsInput
+
+  scoringSessions: ScoringSessionUpdateManyWithoutTeamsInput
 }
 
 schema {

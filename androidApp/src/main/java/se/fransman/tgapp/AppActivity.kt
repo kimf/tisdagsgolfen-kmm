@@ -4,23 +4,17 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material.MaterialTheme
-import androidx.compose.runtime.Composable
-import org.koin.androidx.compose.getViewModel
+import se.fransman.tgapp.composables.MainComposable
 
 class AppActivity: ComponentActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
+    val model = (application as App).model
 
     setContent {
       MaterialTheme() {
-        MainLayout()
+        MainComposable(model)
       }
     }
   }
-}
-
-@Composable
-fun MainLayout() {
-  val viewModel = getViewModel<AppViewModel>()
-  MainScreen(viewModel = viewModel)
 }
