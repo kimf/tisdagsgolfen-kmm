@@ -25,13 +25,11 @@ dependencies {
     // Compose Utils
     implementation("com.google.accompanist:accompanist-insets:0.18.0")
     // Coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.1-new-mm-dev2")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.1-new-mm-dev2")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2")
 
-    // Koin
-    implementation("io.insert-koin:koin-core:3.1.2")
-    implementation("io.insert-koin:koin-android:3.1.2")
-    implementation("io.insert-koin:koin-androidx-compose:3.1.2")
+    // Flywheel
+    implementation("com.msabhi:flywheel-android:1.1.4-RC")
 }
 
 android {

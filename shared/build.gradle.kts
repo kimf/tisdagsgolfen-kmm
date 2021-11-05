@@ -34,27 +34,19 @@ kotlin {
             languageSettings.apply {
                 optIn("kotlinx.coroutines.ExperimentalCoroutinesApi")
                 optIn("kotlin.time.ExperimentalTime")
-                optIn("com.russhwolf.settings.ExperimentalSettingsImplementation")            }
+            }
         }
 
         val commonMain by getting {
             dependencies {
                 // Coroutines
-                implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2-native-mt"){
-                    version {
-                        strictly("1.5.2-native-mt")
-                    }
-                }
+                implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
 
                 // Apollo
                 implementation("com.apollographql.apollo3:apollo-runtime:3.0.0-beta01")
-                // Ktor
-                implementation("io.ktor:ktor-client-core:1.6.5")
-                implementation("io.ktor:ktor-client-json:1.6.5")
-                implementation("io.ktor:ktor-client-logging:1.6.5")
-                implementation("io.ktor:ktor-client-serialization:1.6.5")
-                // Settings
-                implementation("com.russhwolf:multiplatform-settings-no-arg:0.7.7")
+
+                //Flywheel (redux)
+                implementation("com.msabhi:flywheel:1.1.4-RC")
             }
         }
         val androidMain by getting {

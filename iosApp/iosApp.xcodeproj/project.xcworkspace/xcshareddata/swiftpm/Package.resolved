@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Flywheel",
+        "repositoryURL": "https://github.com/abhimuktheeswarar/Flywheel.git",
+        "state": {
+          "branch": null,
+          "revision": "4db61abe028f9e8f94dea6faffc46fc6f33039e5",
+          "version": "1.1.4-RC"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
