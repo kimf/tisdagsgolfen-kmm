@@ -1,3 +1,5 @@
+rootProject.name = "Tisdagsgolfen"
+
 pluginManagement {
     repositories {
         google()
@@ -6,6 +8,5 @@ pluginManagement {
     }
 }
 
-rootProject.name = "Tisdagsgolfen"
 include(":androidApp")
 include(":shared")

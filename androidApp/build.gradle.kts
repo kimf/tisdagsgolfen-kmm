@@ -1,45 +1,46 @@
+import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
+
+
 plugins {
     id("com.android.application")
     kotlin("android")
 }
 
+val composeVersion = findProperty("version.compose") as String
+
 dependencies {
     implementation(project(":shared"))
-    implementation("androidx.appcompat:appcompat:1.3.1")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.1")
-    implementation("androidx.activity:activity-ktx:1.4.0")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.4.0")
-    implementation("androidx.compose.material3:material3:1.0.0-alpha01")
-    implementation("androidx.core:core:1.7.0")
-
-    implementation(project(":shared"))
-    implementation("androidx.lifecycle:lifecycle-process:2.4.0")
-    // desugar utils
+    //desugar utils
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.5")
-    // Compose
-    implementation("androidx.compose.ui:ui:1.1.0-beta01")
-    implementation("androidx.compose.foundation:foundation:1.1.0-beta01")
-    implementation("androidx.compose.material:material:1.1.0-beta01")
-    implementation("androidx.compose.ui:ui-tooling:1.1.0-beta01")
-    implementation("androidx.activity:activity-compose:1.4.0")
-    // Compose Utils
-    implementation("com.google.accompanist:accompanist-insets:0.18.0")
-    // Coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.1-new-mm-dev2")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.1-new-mm-dev2")
-
-    // Koin
+    //Compose
+    implementation("androidx.compose.ui:ui:$composeVersion")
+    implementation("androidx.compose.ui:ui-tooling:$composeVersion")
+    implementation("androidx.compose.foundation:foundation:$composeVersion")
+    implementation("androidx.compose.material:material:$composeVersion")
+    //Compose Utils
+    implementation("io.coil-kt:coil-compose:1.4.0")
+    implementation("androidx.activity:activity-compose:1.3.1")
+    implementation("com.google.accompanist:accompanist-insets:0.20.0")
+    implementation("com.google.accompanist:accompanist-swiperefresh:0.20.0")
+    //Coroutines
+    val coroutinesVersion = findProperty("version.kotlinx.coroutines")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion")
+    //DI
     implementation("io.insert-koin:koin-core:3.1.2")
     implementation("io.insert-koin:koin-android:3.1.2")
-    implementation("io.insert-koin:koin-androidx-compose:3.1.2")
+    //Navigation
+    implementation("cafe.adriel.voyager:voyager-navigator:1.0.0-beta13")
+    //WorkManager
+    implementation("androidx.work:work-runtime-ktx:2.7.0")
 }
 
 android {
-    compileSdk = 31
+    compileSdk = (findProperty("android.compileSdk") as String).toInt()
     defaultConfig {
         applicationId = "se.fransman.tg"
-        minSdk = 31
-        targetSdk = 31
+        minSdk = (findProperty("android.minSdk") as String).toInt()
+        targetSdk = (findProperty("android.targetSdk") as String).toInt()
         versionCode = 1
         versionName = "1.0"
     }
@@ -67,6 +68,6 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.0.4"
+        kotlinCompilerExtensionVersion = composeVersion
     }
 }

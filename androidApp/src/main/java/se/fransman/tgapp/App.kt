@@ -1,39 +1,38 @@
 package se.fransman.tgapp
 
 import android.app.Application
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleObserver
-import androidx.lifecycle.OnLifecycleEvent
-import se.fransman.tg.shared.viewmodel.DKMPViewModel
-import se.fransman.tg.shared.viewmodel.getAndroidInstance
-import androidx.lifecycle.ProcessLifecycleOwner
+import se.fransman.tg.app.LeaderboardStore
+import se.fransman.tg.core.Tisdagsgolfen
+import se.fransman.tg.core.create
+import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidLogger
+import org.koin.core.context.startKoin
+import org.koin.core.logger.Level
+import org.koin.dsl.module
 
 class App : Application() {
 
-  lateinit var model: DKMPViewModel
-
   override fun onCreate() {
     super.onCreate()
-    model = DKMPViewModel.Factory.getAndroidInstance(this)
-
-    val appLifecycleObserver = AppLifecycleObserver(model)
-    ProcessLifecycleOwner.get().lifecycle.addObserver(appLifecycleObserver)
+    initKoin()
+    launchBackgroundSync()
   }
 
-}
+  private val appModule = module {
+    single { Tisdagsgolfen.create(get(), BuildConfig.DEBUG) }
+    single { LeaderboardStore(get()) }
+  }
 
-class AppLifecycleObserver (private val model: DKMPViewModel) : LifecycleObserver {
+  private fun initKoin() {
+    startKoin {
+      if (BuildConfig.DEBUG) androidLogger(Level.ERROR)
 
-  @OnLifecycleEvent(Lifecycle.Event.ON_START)
-  fun onEnterForeground() {
-    if (model.stateFlow.value.recompositionIndex > 0) { // not calling at app startup
-      model.navigation.onReEnterForeground()
+      androidContext(this@App)
+      modules(appModule)
     }
   }
 
-  @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
-  fun onEnterBackground() {
-    model.navigation.onEnterBackground()
+  private fun launchBackgroundSync() {
+    RefreshWorker.enqueue(this)
   }
-
 }

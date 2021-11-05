@@ -30,52 +30,43 @@ kotlin {
     }
 
     sourceSets {
-        all {
-            languageSettings.apply {
-                optIn("kotlinx.coroutines.ExperimentalCoroutinesApi")
-                optIn("kotlin.time.ExperimentalTime")
-                optIn("com.russhwolf.settings.ExperimentalSettingsImplementation")            }
-        }
-
         val commonMain by getting {
             dependencies {
-                // Coroutines
-                implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2-native-mt"){
-                    version {
-                        strictly("1.5.2-native-mt")
-                    }
-                }
+                //Network
+                implementation("io.ktor:ktor-client-core:${findProperty("version.ktor")}")
+                implementation("io.ktor:ktor-client-logging:${findProperty("version.ktor")}")
+                //Coroutines
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${findProperty("version.kotlinx.coroutines")}")
+                //Logger
+                implementation("io.github.aakira:napier:2.1.0")
+                //Key-Value storage
+                implementation("com.russhwolf:multiplatform-settings:0.8.1")
 
                 // Apollo
                 implementation("com.apollographql.apollo3:apollo-runtime:3.0.0-beta01")
-                // Ktor
-                implementation("io.ktor:ktor-client-core:1.6.5")
-                implementation("io.ktor:ktor-client-json:1.6.5")
-                implementation("io.ktor:ktor-client-logging:1.6.5")
-                implementation("io.ktor:ktor-client-serialization:1.6.5")
-                // Settings
-                implementation("com.russhwolf:multiplatform-settings-no-arg:0.7.7")
             }
         }
+
         val androidMain by getting {
             dependencies {
-                implementation("io.ktor:ktor-client-android:1.6.4")
+                implementation("io.ktor:ktor-client-okhttp:${findProperty("version.ktor")}")
             }
         }
+
         val iosMain by getting {
             dependencies {
-                implementation("io.ktor:ktor-client-ios:1.6.4")
+                implementation("io.ktor:ktor-client-ios:${findProperty("version.ktor")}")
             }
         }
     }
 }
 
 android {
-    compileSdk = 31
+    compileSdk = (findProperty("android.compileSdk") as String).toInt()
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     defaultConfig {
-        minSdk = 31
-        targetSdk = 31
+        minSdk = (findProperty("android.minSdk") as String).toInt()
+        targetSdk = (findProperty("android.targetSdk") as String).toInt()
     }
     buildTypes {
         getByName("release") {
@@ -83,18 +74,3 @@ android {
         }
     }
 }
-
-val packForXcode by tasks.creating(Sync::class) {
-    group = "build"
-    val mode = System.getenv("CONFIGURATION") ?: "DEBUG"
-    val sdkName = System.getenv("SDK_NAME") ?: "iphonesimulator"
-    val targetName = "ios" + if (sdkName.startsWith("iphoneos")) "Arm64" else "X64"
-    val framework = kotlin.targets.getByName<KotlinNativeTarget>(targetName).binaries.getFramework(mode)
-    inputs.property("mode", mode)
-    dependsOn(framework.linkTask)
-    val targetDir = File(buildDir, "xcode-frameworks")
-    from({ framework.outputDirectory })
-    into(targetDir)
-}
-
-tasks.getByName("build").dependsOn(packForXcode)
